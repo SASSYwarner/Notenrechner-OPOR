@@ -1,9 +1,18 @@
-Startseite                                              <img width="744" height="861" alt="image" src="https://github.com/user-attachments/assets/f4149552-db11-466d-b03c-1d87987ed219" />
-Seite 1
-- Wilkommen zu 
-- Logo/Slogan
-- Name
+<table>
+<tr>
+<td>
+
+**Startseite Seite 1**  
+- Willkommen zu  
+- Logo/Slogan  
+- Name  
 - click
 
+</td>
+<td>
 
+<img width="300" src="https://github.com/user-attachments/assets/f4149552-db11-466d-b03c-1d87987ed219" alt="image" />
 
+</td>
+</tr>
+</table>
