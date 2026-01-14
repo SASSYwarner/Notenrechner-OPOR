@@ -4,3 +4,6 @@ Seite 1
 - Logo/Slogan
 - Name
 - click
+
+  <img width="744" height="861" alt="image" src="https://github.com/user-attachments/assets/f4149552-db11-466d-b03c-1d87987ed219" />
+
