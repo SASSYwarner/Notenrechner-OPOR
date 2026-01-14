@@ -1,0 +1,14 @@
+    <script>
+    function CalcLk() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let sum = 0;
+
+    for (let x = 0; x < 5 && x < table.rows.length; x++) {
+        for (let y = 0; y < table.rows[x].cells.length; y++) {
+            sum += Number(table.rows[x].cells[y].textContent) || 0;
+        }
+    }
+
+    }
+</script>
+<button onclick="CalcLk()">fertig</button>
