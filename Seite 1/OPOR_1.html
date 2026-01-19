@@ -1,42 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPOR Scroll Animation</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* ===================== BASE ===================== */
+* {
+  box-sizing: border-box;
+}
 
-  <!-- HERO / FIRST PAGE -->
-  <section id="hero">
-    <p id="welcome">Willkommen zu</p>
-    <img id="heroImg" src="https://f2.toyhou.se/file/f2-toyhou-se/images/113239969_rN9116xpWXO6uDq.png" alt="Hero Image">
-    <h1 id="opor">OPOR</h1>
-  </section>
+html, body {
+  margin: 0;
+  background: black;
+  font-family: 'Times New Roman', sans-serif;
+  overflow-x: hidden;
+  color: #9baebe;
+  scroll-behavior: smooth;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ===================== HERO ===================== */
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+/* Welcome text */
+#welcome {
+  font-size: clamp(24px, 4vw, 64px);
+  margin: 0;
+  z-index: 3;
+}
+
+/* Main image */
+#heroImg {
+  width: clamp(200px, 40vw, 400px);
+  height: auto;
+  z-index: 2;
+}
+
+/* Large background text */
+#opor {
+  font-size: clamp(150px, 25vw, 350px);
+  line-height: 0.9;
+  margin: 0;
+  z-index: 1;
+  color: #9baebe;
+  user-select: none;
+}
+
+/* ===================== BUTTON ON WHITE PANEL ===================== */
+/* White background panel & center */
+#buttonWrapper {
+  background: white;           /* white panel */
+  padding: 40px 0;             /* vertical padding only, no horizontal */
+  margin-top: -60px;           /* moves it up, overlapping hero */
+  border-radius: 0;            /* remove if you want full width */
+  display: flex;               /* use flex to center image */
+  justify-content: center;     /* centers buttonImg horizontally */
+  width: 100%;                 /* full width of the page */
+  z-index: 2;
+}
+
+/* Button image itself */
+#buttonImg {
+  width: clamp(200px, 40vw, 400px);
+  height: auto;
+  display: block;              /* makes flex centering work */
+  cursor: pointer;
+}
 
 
-    <div class="ContentContainer">
-    <div class="Content">
-      <p>ʻO Lorem Ipsum kahi haʻahaʻa wale nō o ka paʻi a me keʻano o nāʻoihana. ʻO Lorem Ipsum ka 'ōlelo papahana maʻamau o kaʻoihana o ka makahiki 1500, i ka wā i lawe ai kekahi mea paʻi kiʻiʻole i keʻano o ka type a scrambled iā ia e hana i kahi puke kiko'ī. ʻAʻole i ola wale i kaʻelima mau kenekulia, akā,ʻo ka leleʻana hoʻi i nāʻano o ka lolouila, e hoʻololiʻoleʻia ana. Ua hoʻolahaʻia i nā makahiki 1960 me ka hoʻokuʻuʻana i nā pepa Letraset i loko o nā moʻolelo Lorem Ipsum, a me nā mea hou aku me ka polokalamu hoʻopuka pākī e like me Aldus PageMaker me nā papa o Lorem Ipsum.
-      </p>
-      <p>ʻO Lorem Ipsum kahi haʻahaʻa wale nō o ka paʻi a me keʻano o nāʻoihana. ʻO Lorem Ipsum ka 'ōlelo papahana maʻamau o kaʻoihana o ka makahiki 1500, i ka wā i lawe ai kekahi mea paʻi kiʻiʻole i keʻano o ka type a scrambled iā ia e hana i kahi puke kiko'ī. ʻAʻole i ola wale i kaʻelima mau kenekulia, akā,ʻo ka leleʻana hoʻi i nāʻano o ka lolouila, e hoʻololiʻoleʻia ana. Ua hoʻolahaʻia i nā makahiki 1960 me ka hoʻokuʻuʻana i nā pepa Letraset i loko o nā moʻolelo Lorem Ipsum, a me nā mea hou aku me ka polokalamu hoʻopuka pākī e like me Aldus PageMaker me nā papa o Lorem Ipsum.
-      </p>
-      <p>ʻO Lorem Ipsum kahi haʻahaʻa wale nō o ka paʻi a me keʻano o nāʻoihana. ʻO Lorem Ipsum ka 'ōlelo papahana maʻamau o kaʻoihana o ka makahiki 1500, i ka wā i lawe ai kekahi mea paʻi kiʻiʻole i keʻano o ka type a scrambled iā ia e hana i kahi puke kiko'ī. ʻAʻole i ola wale i kaʻelima mau kenekulia, akā,ʻo ka leleʻana hoʻi i nāʻano o ka lolouila, e hoʻololiʻoleʻia ana. Ua hoʻolahaʻia i nā makahiki 1960 me ka hoʻokuʻuʻana i nā pepa Letraset i loko o nā moʻolelo Lorem Ipsum, a me nā mea hou aku me ka polokalamu hoʻopuka pākī e like me Aldus PageMaker me nā papa o Lorem Ipsum.
-      </p>
-     </div>
-  </div>
-</div>
+/* ===================== CONTENT / LOREM IPSUM ===================== */
+
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ContentContainer {
+  position: relative;
+  display: block;
+  background-color: white;
+  z-index: 1;
+}
+
+.Content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 75px 0;
+  color: black;
+}
+
+p {
+  margin: 75px 0;
+  line-height: 28px;
+}
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
 
 
 
-<div id="buttonWrapper">
-  <img id="buttonImg" src="https://f2.toyhou.se/file/f2-toyhou-se/images/113387279_cJ0f0wykZSvQbLV.png" alt="buttonImg">
-</div>
 
 
+/* ===================== PARALLAX ===================== */
 
-
-  <script src="script.js"></script>
-</body>
-</html>
+.ParallaxContainer {
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: -1;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  transform: translateZ(-1px) scale(2);
+  background:
+    url(https://www.toptal.com/designers/subtlepatterns/patterns/sakura.png),
+    rgb(250, 228, 216);
+}
