@@ -1,14 +1,40 @@
     <script>
-    function CalcLk() {
-        const table = document.getElementById("Notenpunktetabelle");
-        let sum = 0;
+        function CalcLk() {
+            const table = document.getElementById("Notenpunktetabelle");
+            let LkPunktzahl = 0;
 
-    for (let x = 0; x < 5 && x < table.rows.length; x++) {
-        for (let y = 0; y < table.rows[x].cells.length; y++) {
-            sum += Number(table.rows[x].cells[y].textContent) || 0;
+            for (let x = 1; x <= 4 && x < table.rows.length; x++) {
+                for (let y = 1; y <= 2 && y < table.rows[x].cells.length; y++) {
+                    LkPunktzahl += Number(table.rows[x].cells[y].textContent) || 0;
+                }
+            }
         }
-    }
+        function CalcGk() {
+            const table = document.getElementById("Notenpunktetabelle");
+            let GkPunktzahl = 0;
 
+            for (let x = 1; x <= 4 && x < table.rows.length; x++) {
+                for (let y = 2; y < table.rows[x].cells.length; y++) {
+                    GkPunktzahl += Number(table.rows[x].cells[y].textContent) || 0;
+                }
+            }
+        }
+        function CalcPrüf() {
+            const table = getElementById("Notenpunktetabelle")
+            let PrüfPunktzahl = 0;
+
+            for (let y = 1; y <= 4 && y < table.cells.length; y++) {
+                PrüfPunktzahl += Number(table.rows[5].cells[y].textContent) || 0;
+            }
+        }
+    function CalcGes() {
+        CalcLk()
+        let LkPunktzahl = CalcLk()
+        CalcGk()
+        let GkPunktzahl = CalcGk()
+        CalcPrüf()
+        let PrüfPunktzahl = CalcPrüf()
+        let Punktzahl = CalcLk() + CalcGk() + CalcPrüf();
+        console.log(Punktzahl)
     }
 </script>
-<button onclick="CalcLk()">fertig</button>
