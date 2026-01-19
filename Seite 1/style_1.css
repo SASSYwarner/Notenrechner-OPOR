@@ -1,15 +1,20 @@
 /* ===================== BASE ===================== */
-body {
+* {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
   background: black;
-  color: #9baebe;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', sans-serif;
   overflow-x: hidden;
+  color: #9baebe;
+  scroll-behavior: smooth;
 }
 
 section {
-  position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* ===================== HERO ===================== */
@@ -18,53 +23,98 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  gap: 2rem;
   position: relative;
-}
-
-#welcome {
-  font-size: 4vw;
   text-align: center;
-  margin: 20px 0;
-  z-index: 3;
-  transition: transform 0.2s, opacity 0.2s;
 }
 
+/* Welcome text */
+#welcome {
+  font-size: clamp(24px, 4vw, 64px);
+  margin: 0;
+  z-index: 3;
+}
+
+/* Main image */
 #heroImg {
-  width: 40vw;
-  max-width: 400px;
+  width: clamp(200px, 40vw, 400px);
   height: auto;
   z-index: 2;
-  transition: transform 0.2s, opacity 0.2s;
 }
 
+/* Large background text */
 #opor {
-  font-size: 25vw;
-  max-font-size: 350px;
-  text-align: center;
-  margin: 20px 0;
+  font-size: clamp(150px, 25vw, 350px);
+  line-height: 0.9;
+  margin: 0;
   z-index: 1;
-  transition: transform 0.2s, opacity 0.2s;
+  color: #9baebe;
+  user-select: none;
 }
 
-#buttonImg {
-  position: absolute;
-  top: 700px;                 /* distance from top of container */
-  left: 50%;                   
-  transform: translateX(-50%); /* horizontally centered */
-  width: 40vw;
-  max-width: 400px;
-  height: auto;               /* keeps original aspect ratio */
+/* ===================== BUTTON ON WHITE PANEL ===================== */
+/* White background panel & center */
+#buttonWrapper {
+  background: white;           /* white panel */
+  padding: 40px 0;             /* vertical padding only, no horizontal */
+  margin-top: -60px;           /* moves it up, overlapping hero */
+  border-radius: 0;            /* remove if you want full width */
+  display: flex;               /* use flex to center image */
+  justify-content: center;     /* centers buttonImg horizontally */
+  width: 100%;                 /* full width of the page */
   z-index: 2;
-  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Button image itself */
+#buttonImg {
+  width: clamp(200px, 40vw, 400px);
+  height: auto;
+  display: block;              /* makes flex centering work */
+  cursor: pointer;
+}
 
 
-/* ===================== SECOND PAGE ===================== */
-#second {
-  background: #1f1f1f;
+/* ===================== CONTENT / LOREM IPSUM ===================== */
+
+.MainContainer {
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.ContentContainer {
+  position: relative;
+  display: block;
+  background-color: white;
+  z-index: 1;
+}
+
+.Content {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 75px 0;
+  color: black;
+}
+
+p {
+  margin: 75px 0;
+  line-height: 28px;
+}
+
+/* ===================== PARALLAX ===================== */
+
+.ParallaxContainer {
   display: flex;
-  align-items: center;
+  flex: 1 0 auto;
+  position: relative;
+  z-index: -1;
+  height: 100vh;
   justify-content: center;
-  font-size: 4vw;
-  color: #9baebe;
+  align-items: center;
+  transform: translateZ(-1px) scale(2);
+  background:
+    url(https://www.toptal.com/designers/subtlepatterns/patterns/sakura.png),
+    rgb(250, 228, 216);
 }
