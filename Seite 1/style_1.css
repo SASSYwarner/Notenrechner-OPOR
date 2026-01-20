@@ -5,19 +5,78 @@
 
 html, body {
   margin: 0;
-  background: black;
-  font-family: 'Times New Roman', sans-serif;
-  overflow-x: hidden;
+  background: black;              /* Hero world */
+  font-family: "Times New Roman", serif;
   color: #9baebe;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-section {
-  min-height: 100vh;
-  width: 100%;
+/* ===================== EDGE TRIGGER ===================== */
+.edge-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100vh;
+  z-index: 1000;
 }
 
-/* ===================== HERO ===================== */
+/* Graphic indicator */
+.edge-indicator {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 6px;
+  height: 60px;
+  background: #9baebe;
+  opacity: 0.35;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.edge-trigger:hover .edge-indicator {
+  opacity: 0.8;
+  transform: translateY(-50%) scaleY(1.2);
+}
+
+/* ===================== SIDEBAR ===================== */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 180px;
+  height: 100vh;
+
+  background: #111;
+  padding-top: 60px;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  transition-delay: 0.4s;          /* delay close */
+
+  z-index: 999;
+}
+
+.edge-trigger:hover + .sidenav,
+.sidenav:hover {
+  transform: translateX(0);
+  transition-delay: 0s;            /* open instantly */
+}
+
+.sidenav a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 22px;
+  color: #818181;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* ===================== HERO (UNCHANGED) ===================== */
 #hero {
   display: flex;
   flex-direction: column;
@@ -26,6 +85,7 @@ section {
   gap: 2rem;
   position: relative;
   text-align: center;
+  min-height: 100vh;
 }
 
 /* Welcome text */
@@ -52,112 +112,47 @@ section {
   user-select: none;
 }
 
-/* ===================== BUTTON ON WHITE PANEL ===================== */
-/* White background panel & center */
-#buttonWrapper {
-  background: white;           /* white panel */
-  padding: 40px 0;             /* vertical padding only, no horizontal */
-  margin-top: -60px;           /* moves it up, overlapping hero */
-  border-radius: 0;            /* remove if you want full width */
-  display: flex;               /* use flex to center image */
-  justify-content: center;     /* centers buttonImg horizontally */
-  width: 100%;                 /* full width of the page */
-  z-index: 2;
+/* ===================== NEW SITE WORLD ===================== */
+/* Everything AFTER hero behaves like a new site */
+.site-world {
+  background: white;
+  color: black;
+  min-height: 100vh;
 }
 
-/* Button image itself */
-#buttonImg {
-  width: clamp(200px, 40vw, 400px);
-  height: auto;
-  display: block;              /* makes flex centering work */
-  cursor: pointer;
-}
-
-
-/* ===================== CONTENT / LOREM IPSUM ===================== */
-
-.MainContainer {
-  perspective: 1px;
-  transform-style: preserve-3d;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}
-
+/* ===================== CONTENT ===================== */
 .ContentContainer {
-  position: relative;
-  display: block;
-  background-color: white;
-  z-index: 1;
+  background: white;
+  padding: 75px 0;                 /* ORIGINAL spacing */
 }
 
 .Content {
   max-width: 750px;
   margin: 0 auto;
-  padding: 75px 0;
-  color: black;
 }
 
-p {
+#opp {
+  width: 100%;
+  font-size: clamp(36px, 6vw, 120px);
+  text-align: center;
+  font-weight: bold;
+  margin: 60px 0;
+  z-index: 2;
+  color: #325774 !important;
+
+  line-height: 1.1; /* or 1.2, prevents overlapping */
+}
+
+/* ORIGINAL paragraph behavior */
+.Content p {
   margin: 75px 0;
   line-height: 28px;
 }
 
-/* The sidebar menu */
-.sidenav {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black */
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 20px;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Style page content */
-.main {
-  margin-left: 160px; /* Same as the width of the sidebar */
-  padding: 0px 10px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
 
 
-
-
-
-/* ===================== PARALLAX ===================== */
-
-.ParallaxContainer {
-  display: flex;
-  flex: 1 0 auto;
-  position: relative;
-  z-index: -1;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  transform: translateZ(-1px) scale(2);
-  background:
-    url(https://www.toptal.com/designers/subtlepatterns/patterns/sakura.png),
-    rgb(250, 228, 216);
+/* ===================== OPTIONAL EXTRA SECTIONS ===================== */
+.extra-section {
+  background: white;
+  padding: 75px 0;
 }
