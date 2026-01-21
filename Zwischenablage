@@ -1,8 +1,0 @@
-<script>
-  function FillTable() {
-      document.querySelectorAll('td[contenteditable="true"]').forEach(td => {
-      td.textContent = "1";
-      });
-  }
-</script>
-<button onclick="FillTable()">füllen</button>
