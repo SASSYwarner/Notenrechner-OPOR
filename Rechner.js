@@ -1,3 +1,235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Mein Titel</title>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      padding: 10px;
+      background-color: #f4f4f4;
+    }
+
+    /* Wrapper für horizontales Scrollen */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    /* Tabelle */
+    #Notenpunktetabelle {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(14px, 2.5vw, 18px);
+      background-color: #fff;
+    }
+
+    #Notenpunktetabelle th,
+    #Notenpunktetabelle td {
+      padding: 10px;
+      min-width: 70px;
+      height: 40px;
+      text-align: center;
+      border: 1px solid #bbb;
+    }
+
+    /* Kopfzeile */
+    #Notenpunktetabelle th {
+      background-color: #e4dcdc;
+      color: #444;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    /* Nicht editierbare Zellen */
+    td:not([contenteditable="true"]) {
+      background-color: #eee;
+      color: #666;
+    }
+
+    /* Editierbare Zellen */
+    td[contenteditable="true"] {
+      background-color: #fff;
+      caret-color: #4a90e2;
+    }
+
+    td[contenteditable="true"]:focus {
+      outline: 2px solid #4a90e2;
+      background-color: #fdfefe;
+    }
+
+    #Notenpunktetabelle tr:last-child th,
+    #Notenpunktetabelle tr:last-child td,
+    #Notenpunktetabelle tr:nth-last-child(2) th,
+    #Notenpunktetabelle tr:nth-last-child(2) td,
+    #Notenpunktetabelle tr:nth-last-child(3) th,
+    #Notenpunktetabelle tr:nth-last-child(3) td,
+    #Notenpunktetabelle tr:nth-last-child(4) th,
+    #Notenpunktetabelle tr:nth-last-child(4) td {
+      background-color: #dfe9f3;
+      font-weight: bold;
+    }
+
+
+    /* Button */
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #4a90e2;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #357abd;
+    }
+
+    /* Extra Optimierung für kleine Displays */
+    @media (max-width: 600px) {
+      #Notenpunktetabelle th,
+      #Notenpunktetabelle td {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="table-wrapper">
+<table id="Notenpunktetabelle">
+
+  <tr>
+    <th></th>
+    <th>Q1</th>
+    <th>Q2</th>
+    <th>Q3</th>
+    <th>Q4</th>
+    <th>Abiturprüfung</th>
+  </tr>
+
+  <tr>
+    <th>1. Prüfungsfach</th>
+    <td contenteditable="true" inputmode="numeric" id="_1_1"></td>
+    <td contenteditable="true" inputmode="numeric" id="_1_2"></td>
+    <td contenteditable="true" inputmode="numeric" id="_1_3"></td>
+    <td contenteditable="true" inputmode="numeric" id="_1_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_1_5"></td>
+  </tr>
+
+  <tr>
+    <th>2. Prüfungsfach</th>
+    <td contenteditable="true" inputmode="numeric" id="_2_1"></td>
+    <td contenteditable="true" inputmode="numeric" id="_2_2"></td>
+    <td contenteditable="true" inputmode="numeric" id="_2_3"></td>
+    <td contenteditable="true" inputmode="numeric" id="_2_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_2_5"></td>
+  </tr>
+
+  <tr>
+    <th>3. Prüfungsfach</th>
+    <td contenteditable="true" inputmode="numeric" id="_3_1"></td>
+    <td contenteditable="true" inputmode="numeric" id="_3_2"></td>
+    <td contenteditable="true" inputmode="numeric" id="_3_3"></td>
+    <td contenteditable="true" inputmode="numeric" id="_3_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_3_5"></td>
+  </tr>
+
+  <tr>
+    <th>4. Prüfungsfach</th>
+    <td contenteditable="true" inputmode="numeric" id="_4_1"></td>
+    <td contenteditable="true" inputmode="numeric" id="_4_2"></td>
+    <td contenteditable="true" inputmode="numeric" id="_4_3"></td>
+    <td contenteditable="true" inputmode="numeric" id="_4_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_4_5"></td>
+  </tr>
+
+  <tr>
+    <th>5. Prüfungsfach</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <td contenteditable="true" inputmode="numeric" id="_5_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_5_5"></td>
+  </tr>
+
+  <tr>
+    <th>Weitere GK</th>
+    <td contenteditable="true" inputmode="numeric" id="_6_1"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_2"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_3"></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Weitere GK</th>
+    <td contenteditable="true" inputmode="numeric" id="_6_4"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_5"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_6"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_7"></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Weitere GK</th>
+    <td contenteditable="true" inputmode="numeric" id="_6_8"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_9"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_10"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_11"></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <th>Weitere GK</th>
+    <td contenteditable="true" inputmode="numeric" id="_6_12"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_13"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_14"></td>
+    <td contenteditable="true" inputmode="numeric" id="_6_15"></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td colspan="6" style="font-weight:bold;">Ergebnis / Summe</td>
+  </tr>
+
+  <tr>
+    <th>Leistungskurse</th>
+    <td colspan="5" id="lkSumme"></td>
+  </tr>
+
+  <tr>
+    <th>Grundkurse</th>
+    <td colspan="5" id="gkSumme"></td>
+  </tr>
+
+  <tr>
+    <th>Abiturprüfungen</th>
+    <td colspan="5" id="pruefSumme"></td>
+  </tr>
+
+  <tr>
+    <th>Gesamt</th>
+    <td colspan="5" id="gesamtSumme"></td>
+  </tr>
+
+  <tr>
+    <th>Abinote</th>
+    <td colspan="5" id="abinote"></td>
+  </tr>
+
+
+</table>
+</div>
    <script>
     function CalcLk() {
         const table = document.getElementById("Notenpunktetabelle");
@@ -48,3 +280,8 @@
         console.log(Schnitt);
     }
   </script>
+
+<button onclick="CalcGes()">Fertig</button>
+
+</body>
+</html>
