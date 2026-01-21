@@ -281,13 +281,13 @@
   }
 
   function CalcGes() {
-  const gkRaw = CalcGK();                 // einfach
-  const lkRaw = CalcLK();                 // roh
-  const pruefRaw = CalcPruefungen();      // roh
+  const gkRaw = CalcGK();                 
+  const lkRaw = CalcLK();                 
+  const pruefRaw = CalcPruefungen();      
 
   const gk = gkRaw;
-  const lk = lkRaw * 2;                   // doppelt
-  const pruef = pruefRaw * 4;             // vierfach
+  const lk = lkRaw * 2;                   
+  const pruef = pruefRaw * 4;             
 
   const gesamt = gk + lk + pruef;
 
