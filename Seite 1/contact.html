@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPOR – Kontakt</title>
+
+  <style>
+    /* RESET */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: "Times New Roman", serif;
+      background: #ffffff;
+      color: #325774;
+    }
+
+    /* PAGE WRAPPER */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 30px 100px;
+    }
+
+    /* HEADINGS */
+    h1 {
+      margin-bottom: 40px;
+      font-size: 2.4rem;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 50px;
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+
+    /* TEXT */
+    p {
+      margin-bottom: 6px; /* FIXED spacing */
+      line-height: 1.5;
+    }
+
+    /* LINKS */
+    a {
+      color: #325774;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      opacity: 0.85;
+    }
+
+    /* ICONS */
+    .icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ADDRESS BLOCK */
+    .address {
+      margin-left: 34px;
+    }
+
+    /* HINWEIS BAR */
+    .notice {
+      margin-top: 70px;
+      padding: 20px 30px;
+      border-top: 1px solid #325774;
+      border-bottom: 1px solid #325774;
+      width: 100%;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid #ddd;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+
+    /* ===================== SIDEBAR ===================== */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 180px;
+  height: 100vh;
+
+  background: #111;
+  padding-top: 60px;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  transition-delay: 0.4s; /* delay close */
+
+  z-index: 999;
+}
+
+.edge-trigger:hover + .sidenav,
+.sidenav:hover {
+  transform: translateX(0);
+  transition-delay: 0s; /* open instantly */
+}
+
+.sidenav a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 22px;
+  color: #818181;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* EDGE INDICATOR */
+.edge-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.edge-indicator {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 6px;
+  height: 60px;
+  background: #9baebe;
+  opacity: 0.35;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.edge-trigger:hover .edge-indicator {
+  opacity: 0.8;
+  transform: translateY(-50%) scaleY(1.2);
+}
+
+  </style>
+</head>
+
+<body>
+
+<main>
+  <h1>Kontakt zu OPOR</h1>
+
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/new-post.png" class="icon">
+    E-Mail
+  </h2>
+  <p><a href="mailto:opor.notenrechner@gmail.com">opor.notenrechner@gmail.com</a></p>
+
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/link.png" class="icon">
+    Links
+  </h2>
+  <p><a href="https://gymnasiumsteglitz.de/" target="_blank">Gymnasium Steglitz</a></p>
+  <p><a href="https://dashboard.gymnasiumsteglitz.de/" target="_blank">Dashboard</a></p>
+  <p><a href="https://github.com/SASSYwarner/Notenrechner-OPOR" target="_blank">GitHub Repository</a></p>
+
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/marker.png" class="icon">
+    Adresse
+  </h2>
+  <div class="address">
+    <p>Gymnasium Steglitz</p>
+    <p>Heesestraße 15</p>
+    <p>12169 Berlin</p>
+    <p>Telefon: 030 93951937</p>
+  </div>
+
+  <div class="notice">
+    Alle Angaben zu uns und unserer App erfolgen schulbezogen.
+    Bitte kontaktiert uns ausschließlich über die oben angegebene E-Mail
+    für Anfragen zum Notenrechner.
+  </div>
+</main>
+
+<footer>
+  © 2026 OPOR · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
+</footer>
+
+<!-- EDGE TRIGGER -->
+<div class="edge-trigger">
+  <div class="edge-indicator"></div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidenav">
+  <a href="about.html" target="_blank" rel="noopener">About</a>
+  <a href="services.html" target="_blank" rel="noopener">Services</a>
+  <a href="rechner-startpage.html" target="_blank" rel="noopener">Rechner</a>
+  <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+  <a href="auth.html" target="_blank" rel="noopener">Login</a>
+  <a href="register.html" target="_blank" rel="noopener">Register</a>
+  <a href="profile.html" target="_blank" rel="noopener">Profile</a>
+</nav>
+
+
+</body>
+</html>
