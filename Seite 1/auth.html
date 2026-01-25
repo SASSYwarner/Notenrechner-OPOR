@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPOR – Login</title>
+<style>
+body {
+  margin:0; font-family:"Times New Roman", serif;
+  background:#0e0e0e; color:#9baebe;
+  display:flex; justify-content:center; align-items:center; height:100vh;
+}
+.container {
+  background:#111; padding:40px; border-radius:12px; width:360px; text-align:center;
+  box-shadow: 0 0 20px #32577444;
+}
+h1 { margin-bottom:20px; }
+input { width:100%; padding:12px; margin:8px 0; border-radius:6px; border:none; }
+button { width:100%; padding:12px; margin-top:12px; border:none; border-radius:6px; background:#325774; color:white; cursor:pointer; font-weight:bold; }
+button:hover { background:#4d7ea8; }
+.error { color:#ff6b6b; margin:8px 0; text-align:center; }
+.register-link { color:#9baebe; margin-top:15px; display:block; font-size:0.9em; cursor:pointer; }
+.register-link:hover { text-decoration:underline; }
+label { display:block; margin-top:10px; font-size:0.9em; cursor:pointer; }
+
+/* ===================== SIDEBAR ===================== */
+.sidenav {
+  position: fixed; top:0; left:0; width:180px; height:100vh; background:#111; padding-top:60px;
+  transform: translateX(-100%); transition: transform 0.35s ease; transition-delay:0.4s; z-index:999;
+}
+.edge-trigger:hover + .sidenav, .sidenav:hover { transform: translateX(0); transition-delay:0s; }
+.sidenav a { display:block; padding:12px 20px; font-size:22px; color:#818181; text-decoration:none; }
+.sidenav a:hover { color:#f1f1f1; }
+.edge-trigger { position: fixed; top:0; left:0; width:14px; height:100vh; z-index:1000; }
+.edge-indicator { position:absolute; top:50%; left:4px; width:6px; height:60px; background:#9baebe; opacity:0.35; transform:translateY(-50%); transition:opacity 0.3s ease, transform 0.3s ease; }
+.edge-trigger:hover .edge-indicator { opacity:0.8; transform:translateY(-50%) scaleY(1.2); }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Login</h1>
+  <input type="text" id="loginId" placeholder="Username oder Email">
+  <input type="password" id="password" placeholder="Password">
+  <label><input type="checkbox" id="rememberMe"> Remember me</label>
+  <div class="error" id="error"></div>
+  <button id="loginBtn">Login</button>
+  <span class="register-link" onclick="window.location.href='register.html'">Kein Account? Hier registrieren</span>
+</div>
+
+<script>
+// Hash-Funktion
+async function hashPassword(pw){
+    const enc = new TextEncoder();
+    const data = await crypto.subtle.digest('SHA-256', enc.encode(pw));
+    return Array.from(new Uint8Array(data)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// Benutzer-Daten
+let users = JSON.parse(localStorage.getItem("opor_users") || "{}");
+
+// Auto-Login bei "Remember Me"
+window.addEventListener("DOMContentLoaded", () => {
+    if(localStorage.getItem("opor_remember") === "true"){
+        const current = localStorage.getItem("opor_currentUser");
+        if(current && users[current]){
+            window.location.href = "profile.html";
+        }
+    }
+});
+
+// Login-Button
+document.getElementById("loginBtn").onclick = async () => {
+    const id = document.getElementById("loginId").value.trim();
+    const pw = document.getElementById("password").value;
+    const remember = document.getElementById("rememberMe").checked;
+    const errorDiv = document.getElementById("error");
+
+    if(!id || !pw){
+        errorDiv.textContent="Bitte alle Felder ausfüllen!";
+        return;
+    }
+
+    // User finden
+    const userKey = Object.keys(users).find(k => users[k].username === id || users[k].email === id);
+    if(!userKey){
+        errorDiv.textContent="User existiert nicht!";
+        return;
+    }
+
+    const inputHash = await hashPassword(pw);
+    if(users[userKey].passwordHash !== inputHash){
+        errorDiv.textContent="Falsches Passwort!";
+        return;
+    }
+
+    // Login erfolgreich
+    localStorage.setItem("opor_currentUser", userKey);
+    if(remember) localStorage.setItem("opor_remember","true");
+    else localStorage.removeItem("opor_remember");
+
+    window.location.href = "profile.html";
+};
+</script>
+
+<div class="edge-trigger"><div class="edge-indicator"></div></div>
+<nav class="sidenav">
+  <a href="about.html" target="_blank" rel="noopener">About</a>
+  <a href="services.html" target="_blank" rel="noopener">Services</a>
+  <a href="rechner-startpage.html" target="_blank" rel="noopener">Rechner</a>
+  <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+  <a href="auth.html" target="_blank" rel="noopener">Login</a>
+  <a href="register.html" target="_blank" rel="noopener">Register</a>
+  <a href="profile.html" target="_blank" rel="noopener">Profile</a>
+</nav>
+
+</body>
+</html>
