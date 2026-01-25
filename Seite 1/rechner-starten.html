@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPOR – Notenrechner</title>
+
+  <style>
+    /* ===== BASE (same feeling as start page) ===== */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: black;
+      color: #9baebe;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 10vw, 120px);
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .hero h2 {
+      font-size: clamp(20px, 4vw, 36px);
+      font-weight: normal;
+      margin: 20px 0 40px;
+      color: #9baebe;
+      opacity: 0.9;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 50px;
+      color: #b7c6d3;
+    }
+
+    /* ===== BUTTON ===== */
+    .cta {
+      display: inline-block;
+      padding: 16px 40px;
+      font-size: 18px;
+      text-decoration: none;
+      color: black;
+      background: #9baebe;
+      border-radius: 50px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta:hover {
+      background: #c7d6e3;
+      transform: translateY(-2px);
+    }
+
+    /* ===== WHITE SECTION ===== */
+    .info {
+      background: white;
+      color: black;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .info h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #325774;
+    }
+
+    .info p {
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    /* ===================== SIDEBAR ===================== */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 180px;
+  height: 100vh;
+
+  background: #111;
+  padding-top: 60px;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  transition-delay: 0.4s; /* delay close */
+
+  z-index: 999;
+}
+
+.edge-trigger:hover + .sidenav,
+.sidenav:hover {
+  transform: translateX(0);
+  transition-delay: 0s; /* open instantly */
+}
+
+.sidenav a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 22px;
+  color: #818181;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* EDGE INDICATOR */
+.edge-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.edge-indicator {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 6px;
+  height: 60px;
+  background: #9baebe;
+  opacity: 0.35;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.edge-trigger:hover .edge-indicator {
+  opacity: 0.8;
+  transform: translateY(-50%) scaleY(1.2);
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>OPOR</h1>
+      <h2>Abitur-Notenrechner</h2>
+
+      <p>
+        Trage deine Kurs- und Prüfungsnoten ein und erhalte sofort deine
+        Gesamtpunktzahl sowie deine voraussichtliche Abiturnote –
+        übersichtlich, transparent und ohne Rechnerei.
+      </p>
+
+      <a class="cta" href="rechner.html">
+        Rechner starten
+      </a>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="info">
+    <h3>Wie funktioniert der Rechner?</h3>
+    <p>
+      Der OPOR-Rechner berücksichtigt Leistungs- und Grundkurse sowie
+      Abiturprüfungen nach dem offiziellen Punktesystem der Oberstufe.
+      Alle Berechnungen erfolgen direkt im Browser – keine Daten werden gespeichert.
+    </p>
+  </section>
+
+<!-- EDGE TRIGGER -->
+<div class="edge-trigger">
+  <div class="edge-indicator"></div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidenav">
+  <a href="about.html" target="_blank" rel="noopener">About</a>
+  <a href="services.html" target="_blank" rel="noopener">Services</a>
+  <a href="rechner-startpage.html" target="_blank" rel="noopener">Rechner</a>
+  <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+  <a href="auth.html" target="_blank" rel="noopener">Login</a>
+  <a href="register.html" target="_blank" rel="noopener">Register</a>
+  <a href="profile.html" target="_blank" rel="noopener">Profile</a>
+</nav>
+
+
+
+</body>
+</html>
