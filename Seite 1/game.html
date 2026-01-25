@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPOR – Mini-Games</title>
+<style>
+body { margin:0; font-family:"Times New Roman", serif; background:#f5f5f5; color:#325774; }
+header, footer { background:#111; color:#9baebe; text-align:center; padding:20px 0; }
+header h1 { margin:0; }
+.container { max-width:900px; margin:40px auto; padding:0 20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+.card { background:white; padding:20px; border-radius:12px; box-shadow:0 0 15px #32577422; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s; text-align:center; }
+.card:hover { transform:scale(1.05); box-shadow:0 0 25px #32577444; }
+.card h2 { margin-bottom:10px; }
+.card p { font-size:0.9em; }
+button { padding:10px 15px; border:none; border-radius:6px; background:#325774; color:white; cursor:pointer; font-weight:bold; }
+button:hover { background:#4d7ea8; }
+
+/* ===================== SIDEBAR ===================== */
+.sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 180px;
+  height: 100vh;
+
+  background: #111;
+  padding-top: 60px;
+
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  transition-delay: 0.4s; /* delay close */
+
+  z-index: 999;
+}
+
+.edge-trigger:hover + .sidenav,
+.sidenav:hover {
+  transform: translateX(0);
+  transition-delay: 0s; /* open instantly */
+}
+
+.sidenav a {
+  display: block;
+  padding: 12px 20px;
+  font-size: 22px;
+  color: #818181;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* EDGE INDICATOR */
+.edge-trigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.edge-indicator {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 6px;
+  height: 60px;
+  background: #9baebe;
+  opacity: 0.35;
+  transform: translateY(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.edge-trigger:hover .edge-indicator {
+  opacity: 0.8;
+  transform: translateY(-50%) scaleY(1.2);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mini-Games Hub</h1>
+</header>
+
+<div class="container">
+  <!-- Example mini-game cards -->
+  <div class="card">
+    <h2>Game 1: Zahlenklick</h2>
+    <p>Klicke so viele Zahlen wie möglich in 30 Sekunden!</p>
+    <button onclick="window.location.href='game1.html'">Start Game 1</button>
+  </div>
+
+  <div class="card">
+    <h2>Game 2: Quiz</h2>
+    <p>Beantworte so viele Fragen wie möglich!</p>
+    <button onclick="window.location.href='game2.html'">Start Game 2</button>
+  </div>
+
+  <div class="card">
+    <h2>Game 3: Memory</h2>
+    <p>Finde die passenden Kartenpaare.</p>
+    <button onclick="window.location.href='game3.html'">Start Game 3</button>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 OPOR – Alle Rechte vorbehalten
+</footer>
+
+
+<!-- EDGE TRIGGER -->
+<div class="edge-trigger">
+  <div class="edge-indicator"></div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidenav">
+  <a href="about.html" target="_blank" rel="noopener">About</a>
+  <a href="services.html" target="_blank" rel="noopener">Services</a>
+  <a href="rechner-startpage.html" target="_blank" rel="noopener">Rechner</a>
+  <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+  <a href="auth.html" target="_blank" rel="noopener">Login</a>
+  <a href="register.html" target="_blank" rel="noopener">Register</a>
+  <a href="profile.html" target="_blank" rel="noopener">Profile</a>
+</nav>
+
+
+</body>
+</html>
