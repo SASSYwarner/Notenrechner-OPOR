@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPOR – Register</title>
+<style>
+body { margin:0; font-family:"Times New Roman", serif; background:#0e0e0e; color:#9baebe; display:flex; justify-content:center; align-items:center; height:100vh; }
+.container { background:#111; padding:40px; border-radius:12px; width:350px; text-align:center; }
+h1 { margin-bottom:20px; }
+input { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:none; }
+button { width:100%; padding:10px; margin-top:12px; border:none; border-radius:6px; background:#325774; color:white; cursor:pointer; font-weight:bold; }
+button:hover { background:#4d7ea8; }
+.error { color:#ff6b6b; margin:8px 0; text-align:center; }
+.login-link { color:#9baebe; margin-top:15px; display:block; font-size:0.9em; cursor:pointer; }
+.login-link:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Registrieren</h1>
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <div class="error" id="error"></div>
+  <button id="registerBtn">Registrieren</button>
+  <span class="login-link" onclick="window.location.href='auth.html'">Schon ein Account? Login hier</span>
+</div>
+
+<script>
+const errorDiv = document.getElementById("error");
+const btn = document.getElementById("registerBtn");
+
+btn.onclick = async () => {
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if(!username || !email || !password){
+        errorDiv.textContent = "Bitte alle Felder ausfüllen!";
+        return;
+    }
+
+    try {
+        const res = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password })
+        });
+        const data = await res.json();
+
+        if(res.ok){
+            // Token speichern
+            localStorage.setItem("opor_token", data.token);
+            localStorage.setItem("opor_currentUser", data.username);
+            window.location.href = "profile.html";
+        } else {
+            errorDiv.textContent = data.error || "Server Fehler";
+        }
+    } catch(e) {
+        errorDiv.textContent = "Server Fehler – bitte prüfen, ob Node läuft!";
+        console.error(e);
+    }
+};
+</script>
+</body>
+</html>
