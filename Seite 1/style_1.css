@@ -112,6 +112,8 @@ html, body {
   user-select: none;
 }
 
+
+
 /* ===================== NEW SITE WORLD ===================== */
 /* Everything AFTER hero behaves like a new site */
 .site-world {
@@ -152,7 +154,45 @@ html, body {
 
 
 /* ===================== OPTIONAL EXTRA SECTIONS ===================== */
-.extra-section {
-  background: white;
-  padding: 75px 0;
+.photo-banner {
+  width: 100vw;               /* full viewport width */
+  height: 350px;              /* adjust as needed */
+  background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/113944952_tjQyn3jwMlQPwOP.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;                  /* remove spacing */
+  border-radius: 0;           /* no rounded corners if you want full bleed */
+  box-shadow: none;           /* remove shadow if you want pure image */
+}
+
+/* Optional: remove body spacing so banner touches edges */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+.site-footer {
+  background-color: #111;        /* dark background */
+  color: #9baebe;                /* text color */
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.site-footer a {
+  color: #9baebe;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+.footer-content p {
+  margin: 5px 0;
 }
