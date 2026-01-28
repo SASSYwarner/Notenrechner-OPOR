@@ -241,122 +241,72 @@
 </div>
 
 <script>
-  function getNumber(cell) {
-    const value = Number(cell.textContent.trim());
-    return isNaN(value) ? 0 : value;
-  }
+    function CalcLk() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let LkPunktzahl = 0;
 
-  function CalcGK() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
-
-    // 24 Grundkurse = alle "Weitere GK"-Zellen
-    for (let row = 3; row <= 9; row++) {
-      for (let col = 1; col <= 4; col++) {
-        const cell = table.rows[row].cells[col];
-        if (cell && cell.isContentEditable) {
-          sum += getNumber(cell);
+        for (let x = 1; x <= 4; x++) {
+            for (let y = 1; y <= 2; y++) {
+                LkPunktzahl += Number(table.rows[y].cells[x].textContent) || 0;
+            }
         }
-      }
+        return LkPunktzahl
     }
-    return sum;
-  }
 
-  function CalcLK() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
+    function CalcGk() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let GkPunktzahl = 0;
 
-    // LK = 1. & 2. Prüfungsfach, Q1–Q4
-    for (let row = 1; row <= 2; row++) {
-      for (let col = 1; col <= 4; col++) {
-        sum += getNumber(table.rows[row].cells[col]);
-      }
+        for (let x = 1; x <= 4; x++) {
+            for (let y = 3; y <= 9; y++) {
+                if(table.rows[y].cells[x].getAttribute("contenteditable")) {
+                    GkPunktzahl += Number(table.rows[y].cells[x].textContent) || 0;
+                }
+            }
+        }
+        return GkPunktzahl
     }
-    return sum;
-  }
 
-  function CalcPruefungen() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
+    function CalcPrüf() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let PrüfPunktzahl = 0;
 
-    // Abiturprüfungen = Spalte 5 der Prüfungsfächer 1–5
-    for (let row = 1; row <= 5; row++) {
-      const cell = table.rows[row].cells[5];
-      if (cell && cell.isContentEditable) {
-        sum += getNumber(cell);
-      }
+        for (let y = 1; y <= 5; y++) {
+            PrüfPunktzahl += Number(table.rows[y].cells[5].textContent) || 0;
+        }
+        return PrüfPunktzahl
     }
-    return sum;
-  }
 
-  function CalcGes() {
-  const gkRaw = CalcGK();                 
-  const lkRaw = CalcLK();                 
-  const pruefRaw = CalcPruefungen();      
+    function CalcGes() {
+        let LkPunktzahl = CalcLk() * 2;
+        console.log(LkPunktzahl);
+        let GkPunktzahl = CalcGk();
+        console.log(GkPunktzahl);
+        let PrüfPunktzahl = CalcPrüf() * 4;
+        console.log(PrüfPunktzahl);
+        let Punktzahl = LkPunktzahl + GkPunktzahl + PrüfPunktzahl;
+        console.log(Punktzahl);
+        let Schnitt = Math.round(56.6 - Punktzahl / 18.0)/10;
+        console.log(Schnitt);
+        const table = document.getElementById("Notenpunktetabelle")
+        table.rows[11].cells[1].textContent = LkPunktzahl
+        table.rows[12].cells[1].textContent = GkPunktzahl
+        table.rows[13].cells[1].textContent = PrüfPunktzahl
+        table.rows[14].cells[1].textContent = Punktzahl
+        table.rows[15].cells[1].textContent = Schnitt
+        table.rows[16].cells[1].textContent = "Nein"
+        if(Punktzahl > 299) {
+          table.rows[16].cells[1].textContent = "Ja"
+        }
+    }
+    
+    function FillTable() {
+        const editableCells = document.querySelectorAll('td[contenteditable="true"]');
 
-  const gk = gkRaw;
-  const lk = lkRaw * 2;                   
-  const pruef = pruefRaw * 4;             
-
-  const gesamt = gk + lk + pruef;
-
-  // Abinote nach deiner Formel
-  let abinote = 5.66 - (gesamt / 180);
-  abinote = Math.round(abinote * 10) / 10;
-
-  if (abinote < 1.0) abinote = "1,0";
-  else if (abinote > 4.0) abinote = "nicht bestanden";
-  else abinote = abinote.toFixed(1).replace(".", ",");
-
-  document.getElementById("gkSumme").textContent = gk;
-  document.getElementById("lkSumme").textContent = lk;
-  document.getElementById("pruefSumme").textContent = pruef;
-  document.getElementById("gesamtSumme").textContent = gesamt;
-  document.getElementById("abinote").textContent = abinote;
-}
-
-  function FillTable() {
-      document.querySelectorAll('td[contenteditable="true"]').forEach(td => {
-      td.textContent = "12";
+        editableCells.forEach(cell => {
+        cell.textContent = 12
       });
-  }
-  function collectRechnerData() {
-    const data = {};
-    document.querySelectorAll('td[contenteditable="true"]').forEach(td => {
-        data[td.id] = td.textContent.trim() || "0";
-    });
-    return data;
-}
-
-function saveRechnerData() {
-    const currentUser = localStorage.getItem("opor_currentUser");
-    if(!currentUser) return;
-
-    const users = JSON.parse(localStorage.getItem("opor_users") || "{}");
-    users[currentUser].calculatorData = collectRechnerData();
-    localStorage.setItem("opor_users", JSON.stringify(users));
-    console.log("Rechner-Daten gespeichert ✅");
-}
-
-function loadRechnerData() {
-    const currentUser = localStorage.getItem("opor_currentUser");
-    if(!currentUser) return;
-
-    const users = JSON.parse(localStorage.getItem("opor_users") || "{}");
-    const data = users[currentUser]?.calculatorData || {};
-
-    for(const id in data){
-        const cell = document.getElementById(id);
-        if(cell) cell.textContent = data[id];
     }
-}
-
-// direkt beim Laden aufrufen
-window.onload = () => {
-    loadRechnerData();
-    CalcGes(); // optional, damit sofort Summen berechnet werden
-};
-
 </script>
 <button onclick="FillTable()">füllen</button>
 <button onclick="CalcGes()">Fertig</button>
