@@ -12,9 +12,11 @@ Arbeitsteilung:
 
 Was wurde gemacht:
 - 7.1.: Website erstellen
-- 12.1. tabelle erstellen
-- 14.1. : Mia: Website weiter gestalten, Felix: angefangen mit der inneren logik, Isa: an Tabelle weitergearbeitet
+- 12.1.: tabelle erstellen
+- 14.1.: Mia: Website weiter gestalten, Felix: angefangen mit der inneren logik, Isa: an Tabelle weitergearbeitet
+- 21.1.: Felix: Rechner weiter gemacht, Mia: versucht auf MongoDB Compass eine User-Tabelle eizurichten
 
 
-  Weitere Ideen:
+Weitere Ideen:
 - ein System für Login/Registrieren - MongoDB und Node.js betriebener Server (?)
+  - Node.js läuft, MongoDB Compass eingerichtet (noch keine User-Datenbank)
