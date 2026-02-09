@@ -14,3 +14,7 @@ Was wurde gemacht:
 - 7.1.: Website erstellen
 - 12.1. tabelle erstellen
 - 14.1. : Mia: Website weiter gestalten, Felix: angefangen mit der inneren logik, Isa: an Tabelle weitergearbeitet
+
+
+  Weitere Ideen:
+- ein System für Login/Registrieren - MongoDB und Node.js betriebener Server (?)
