@@ -16,13 +16,13 @@ Das Projekt wurde von Schülern der Oberstufe (Q2) am Gymnasium Steglitz entwick
 Der Notenrechner ist in mehrere Dateien aufgeteilt, um Übersichtlichkeit und Wartbarkeit zu gewährleisten:
 
 - [rechner-startpage.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/Website/Rechner/rechner-startpage.html)  
-  Startseite des Rechners, die in die Webseite eingebunden ist.
+  Startseite des Rechners - Übergang zum Rechner
 
 - [rechner.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/Website/Rechner/rechner.html)  
-  Rechneransicht innerhalb der Website nach der Startseite.
+  Rechnerseite innerhalb der Website nach der Startseite
 
 - [rechner-calc.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/Website/Rechner/rechner-calc.html)  
-  Enthält die eigentliche Berechnungslogik des Notenrechners.
+  Enthält den eigentlichen Rechner, samt Funtion und Tabelle
 
 ---
 
