@@ -1,11 +1,18 @@
-OPOR
+# One Place One Result (OPOR)
 
-One Place One Result
+OPOR ist ein schulisches Softwareprojekt zur Berechnung von Noten.  
+Ziel ist es, Noten übersichtlich, nachvollziehbar und stressfrei darzustellen.
 
-OPOR ist ein schulisches Softwareprojekt, entwickelt von Schülern der Oberstufe, mit dem Ziel, Noten übersichtlich, ehrlich und ohne Stress berechnen zu können.
-Entwickelt am Gymnasium Steglitz (Q2).
+Das Projekt wurde von Schülern der Oberstufe (Q2) am Gymnasium Steglitz entwickelt.
 
-In dem Ordner "Website" befinden sich alle für das Design und den Aufbau der Webseite relevanten Dateien und Informationen - alles übersichtlich in beschrifteten Ordnern sortiert.
+---
 
-Der eigentliche Rechner ist eine Datei für sich, die in direkt in die Webseite eingebettet wurde. 
-So ist es vor allem sehr leicht, Veränderungen an der Funktion des Notenrechners zu verändern - ohne viel Aufwand.
+## Projektstruktur
+- Der Ordner `Website` enthält alle Dateien für Design und Aufbau der Webseite.
+- Der Notenrechner ist als eigene Datei umgesetzt und direkt in die Webseite eingebettet.
+  Dadurch können Änderungen an der Berechnungslogik einfach und ohne großen Aufwand vorgenommen werden.
+
+---
+
+## Zielplattform
+- Web
