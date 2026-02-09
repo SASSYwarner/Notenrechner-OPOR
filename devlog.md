@@ -1,17 +1,14 @@
-# Abiturnotenrechner
+# Abiturnotenrechner – Devlog
 
-## Projektübersicht
-Dieses Projekt ist ein webbasiertes Tool zur Berechnung der Abiturnote.  
-Nutzer können ihre Noten eingeben, welche anschließend automatisch ausgewertet werden.
-
-Ziel ist es, einen übersichtlichen und funktionalen Abiturnotenrechner für den Einsatz im Web zu entwickeln.
+## Projekt
+Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebener Noten.
 
 ---
 
-## Projektmitglieder
-- Mia  
-- Felix  
-- Isabel  
+## Team
+- Mia
+- Felix
+- Isabel
 
 ---
 
@@ -24,62 +21,54 @@ Ziel ist es, einen übersichtlichen und funktionalen Abiturnotenrechner für den
 - **Mia**
   - Website-Design
   - Einrichtung von Node.js
-  - Einrichtung und Verbindung von MongoDB Compass über die Windows Shell
+  - Einrichtung von MongoDB Compass und Verbindung über die Windows Shell
 
 - **Felix**
-  - Programmierung des Notenrechners
+  - Entwicklung des Notenrechners
   - Umsetzung der internen Logik
 
 - **Isabel**
-  - Erstellung und Pflege der Notentabelle
+  - Erstellung und Weiterentwicklung der Notentabelle
   - Mitarbeit am Notenrechner
 
 ---
 
-## Projektverlauf
+## Entwicklungsverlauf
 
-- **07.01.**
-  - Erstellung der grundlegenden Website
+### 07.01.
+- Erstellung der grundlegenden Website-Struktur
 
-- **12.01.**
-  - Erstellung der Notentabelle
+### 12.01.
+- Erstellung der Notentabelle
 
-- **14.01.**
-  - Mia: Weiteres Website-Design  
-  - Felix: Beginn der internen Logik  
-  - Isabel: Weiterarbeit an der Tabelle
+### 14.01.
+- Mia: Weiteres Website-Design
+- Felix: Beginn der internen Logik
+- Isabel: Weiterarbeit an der Tabelle
 
-- **19.01.**
-  - Felix und Isabel: Arbeit am Notenrechner und an der Tabelle  
-  - Mia: Einrichtung von Node.js und MongoDB Compass sowie Verbindung über die Windows Shell
+### 19.01.
+- Felix und Isabel: Weiterentwicklung von Notenrechner und Tabelle
+- Mia: Einrichtung von Node.js und MongoDB Compass, Verbindung über die Windows Shell
 
-- **21.01.**
-  - Felix: Weiterentwicklung des Rechners  
-  - Mia: Versuch, eine User-Tabelle in MongoDB Compass einzurichten
+### 21.01.
+- Felix: Weiterarbeit am Notenrechner
+- Mia: Versuch der Einrichtung einer User-Tabelle in MongoDB Compass
 
 ---
 
-## Aktueller Stand
+## Aktueller Entwicklungsstand
 - Website-Grundstruktur vorhanden
-- Notenrechner und Tabelle größtenteils umgesetzt
-- Node.js erfolgreich eingerichtet
+- Notenrechner größtenteils funktionsfähig
+- Notentabelle umgesetzt
+- Node.js läuft
 - MongoDB Compass eingerichtet
-- Noch keine funktionierende User-Datenbank
+- User-Datenbank noch nicht vollständig umgesetzt
 
 ---
 
 ## Verwendete Technologien
-- HTML / CSS
+- HTML
+- CSS
 - JavaScript
 - Node.js
 - MongoDB (Compass)
-
----
-
-## Installation
-
-### Voraussetzungen
-- Node.js (installiert)
-- MongoDB Compass (installiert)
-
-
