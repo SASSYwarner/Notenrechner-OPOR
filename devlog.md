@@ -14,6 +14,7 @@ Was wurde gemacht:
 - 7.1.: Website erstellen
 - 12.1.: tabelle erstellen
 - 14.1.: Mia: Website weiter gestalten, Felix: angefangen mit der inneren logik, Isa: an Tabelle weitergearbeitet
+- 19.1: Felix und Isabel: Notenrechner/Tabelle, Mia: Node.js und MongoDB Compass eingerichtet und durch Windows Shell verbunden
 - 21.1.: Felix: Rechner weiter gemacht, Mia: versucht auf MongoDB Compass eine User-Tabelle eizurichten
 
 
