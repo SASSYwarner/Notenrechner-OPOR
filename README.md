@@ -3,7 +3,7 @@
 OPOR ist ein schulisches Softwareprojekt zur Berechnung von Noten.  
 Ziel ist es, Noten übersichtlich, nachvollziehbar und stressfrei darzustellen.
 
-Das Projekt wurde von Schülern der Oberstufe (Q2) am Gymnasium Steglitz entwickelt.
+Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz entwickelt.
 
 ---
 
