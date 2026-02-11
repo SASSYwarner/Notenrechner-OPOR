@@ -7,21 +7,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <script>
-  const currentUser = localStorage.getItem("opor_current_user");
-  if (!currentUser) {
-    window.location.href = "auth.html";
-  }
-  </script>
-
-  
   <style>
     body {
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       padding: 10px;
-      background-color: #f4f4f4;
+      background-color: #b3b1b1;
     }
 
     /* Wrapper für horizontales Scrollen */
@@ -34,7 +25,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: clamp(14px, 2.5vw, 18px);
-      background-color: #fff;
+      background-color: #ff0000;
     }
 
     #Notenpunktetabelle th,
@@ -43,13 +34,13 @@
       min-width: 70px;
       height: 40px;
       text-align: center;
-      border: 1px solid #bbb;
+      border: 1px solid #06003a;
     }
 
     /* Kopfzeile */
     #Notenpunktetabelle th {
-      background-color: #e4dcdc;
-      color: #444;
+      background-color: #ffffff;
+      color: #000000;
       position: sticky;
       top: 0;
       z-index: 1;
@@ -57,18 +48,22 @@
 
     /* Nicht editierbare Zellen */
     td:not([contenteditable="true"]) {
-      background-color: #eee;
-      color: #666;
+      background-color: #cfcbe2;
+      color: #000000;
+    }
+
+    #Notenpunktetabelle tr:nth-last-child(-n+5) td {
+      background-color: #ffffff !important;
     }
 
     /* Editierbare Zellen */
     td[contenteditable="true"] {
-      background-color: #fff;
-      caret-color: #4a90e2;
+      background-color: #ffffff;
+      caret-color: #e60000;
     }
 
     td[contenteditable="true"]:focus {
-      outline: 2px solid #4a90e2;
+      outline: 2px solid #fdffff;
       background-color: #fdfefe;
     }
 
@@ -80,8 +75,7 @@
     #Notenpunktetabelle tr:nth-last-child(3) td,
     #Notenpunktetabelle tr:nth-last-child(4) th,
     #Notenpunktetabelle tr:nth-last-child(4) td {
-      background-color: #dfe9f3;
-      font-weight: bold;
+      background-color: #ffffff; 
     }
 
 
@@ -91,7 +85,7 @@
       padding: 12px 20px;
       font-size: 16px;
       border: none;
-      background-color: #4a90e2;
+      background-color: #1c009b;
       color: white;
       border-radius: 8px;
       cursor: pointer;
@@ -99,7 +93,7 @@
     }
 
     button:hover {
-      background-color: #357abd;
+      background-color: #1c009b;
     }
 
     /* Extra Optimierung für kleine Displays */
@@ -164,9 +158,9 @@
 
   <tr>
     <th>5. Prüfungsfach</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td></td>
+    <td></td>
+    <td></td>
     <td contenteditable="true" inputmode="numeric" id="_5_4"></td>
     <td contenteditable="true" inputmode="numeric" id="_5_5"></td>
   </tr>
@@ -208,7 +202,7 @@
   </tr>
 
   <tr>
-    <td colspan="6" style="font-weight:bold;">Ergebnis / Summe</td>
+    <th colspan="6" style="font-weight:bold;">Ergebnis / Summe</th>
   </tr>
 
   <tr>
@@ -241,30 +235,6 @@
 </div>
 
 <script>
-  const editableCells = document.querySelectorAll('td[contenteditable="true"]');
-  editableCells.forEach(cell => {
-    cell.addEventListener("input", () => {
-      const selection = window.getSelection();
-      const range = selection.getRangeAt(0);
-      const caretPosition = range.startOffset;
-      let value = cell.textContent;
-      value = value.replace(/\D/g, "");
-      if (value !== "") {
-        let num = Math.min(parseInt(value, 10), 15);
-        value = num.toString();
-      }
-      cell.textContent = value;
-      const newRange = document.createRange();
-      const textNode = cell.firstChild;
-      if (textNode) {
-        const newPos = Math.min(caretPosition, textNode.length);
-        newRange.setStart(textNode, newPos);
-        newRange.collapse(true);
-        selection.removeAllRanges();
-        selection.addRange(newRange);
-      }
-    });
-  });
     function CalcLk() {
         const table = document.getElementById("Notenpunktetabelle");
         let LkPunktzahl = 0;
@@ -331,10 +301,32 @@
         cell.textContent = 12
       });
     }
+    function saveRechnerData() {
+
+    let LkPunktzahl = CalcLk() * 2;
+    let GkPunktzahl = CalcGk();
+    let PrüfPunktzahl = CalcPrüf() * 4;
+    let Punktzahl = LkPunktzahl + GkPunktzahl + PrüfPunktzahl;
+    let Schnitt = Math.round(56.6 - Punktzahl / 18.0)/10;
+
+    // Daten speichern
+    localStorage.setItem("lk", LkPunktzahl);
+    localStorage.setItem("gk", GkPunktzahl);
+    localStorage.setItem("pruef", PrüfPunktzahl);
+    localStorage.setItem("gesamt", Punktzahl);
+    localStorage.setItem("note", Schnitt);
+
+    // Weiterleitung
+    window.location.href = "rechner.html";
+}
+
+
+
 </script>
 <button onclick="FillTable()">füllen</button>
 <button onclick="CalcGes()">Fertig</button>
 <button onclick="saveRechnerData()">Speichern</button>
+
 
 
 </body>
