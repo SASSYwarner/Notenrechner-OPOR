@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPOR – About</title>
+
+  <style>
+    /* ================= RESET ================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Times New Roman", serif;
+      background: white;
+      color: #325774;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ================= SIDEBAR ================= */
+    .edge-trigger {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 14px;
+      height: 100vh;
+      z-index: 1000;
+    }
+
+    .edge-indicator {
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 6px;
+      height: 60px;
+      background: #325774;
+      opacity: 0.35;
+      transform: translateY(-50%);
+    }
+
+    .sidenav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 180px;
+      height: 100vh;
+      background: #111;
+      padding-top: 60px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .edge-trigger:hover + .sidenav,
+    .sidenav:hover {
+      transform: translateX(0);
+    }
+
+    .sidenav a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 22px;
+      color: #818181;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    /* ================= BANNER ================= */
+    .photo-banner {
+      width: 100vw;
+      height: 280px;
+      background-image: url("https://f2.toyhou.se/file/f2-toyhou-se/images/113944952_tjQyn3jwMlQPwOP.jpg");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* ================= CONTENT ================= */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 60px;
+    }
+
+    /* ================= CARDS ================= */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      border: 1px solid #32577455;
+      padding: 40px 30px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      min-height: 160px;
+    }
+
+    .card h2 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    .card p {
+      margin-top: 20px;
+      line-height: 1.6;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* EXPAND EFFECT */
+    .card:hover {
+      transform: scale(1.05);
+      background: #32577408;
+    }
+
+    .card:hover p {
+      opacity: 1;
+      max-height: 300px;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      margin-top: 120px;
+      padding: 40px;
+      background: #111;
+      color: #9baebe;
+      text-align: center;
+    }
+
+    footer a {
+      color: #9baebe;
+      margin: 0 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- EDGE + SIDEBAR -->
+  <div class="edge-trigger"><div class="edge-indicator"></div></div>
+
+<!-- EDGE TRIGGER -->
+<div class="edge-trigger">
+  <div class="edge-indicator"></div>
+</div>
+
+<!-- SIDEBAR -->
+<nav class="sidenav">
+  <a href="about.html" target="_blank" rel="noopener">About</a>
+  <a href="services.html" target="_blank" rel="noopener">Services</a>
+  <a href="rechner-startpage.html" target="_blank" rel="noopener">Rechner</a>
+  <a href="contact.html" target="_blank" rel="noopener">Contact</a>
+  <a href="auth.html" target="_blank" rel="noopener">Login</a>
+  <a href="register.html" target="_blank" rel="noopener">Register</a>
+  <a href="profile.html" target="_blank" rel="noopener">Profile</a>
+</nav>
+
+
+  <!-- BANNER -->
+  <section class="photo-banner"></section>
+
+  <!-- MAIN -->
+  <main>
+    <h1>Über OPOR</h1>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h2>Projekt</h2>
+        <p>
+          OPOR ist ein schulisches Softwareprojekt, entwickelt von Schülern der Oberstufe,
+          mit dem Ziel, Noten übersichtlich, ehrlich und ohne Stress berechnen zu können.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Schule</h2>
+        <p>
+          Entwickelt am Gymnasium Steglitz (Q2).  
+          Von Schülern – für Schüler – mit echtem Schulalltag im Kopf.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Datenschutz</h2>
+        <p>
+          Es werden keine personenbezogenen Daten gespeichert.
+          Alle Berechnungen erfolgen lokal im Browser.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Open Source</h2>
+        <p>
+          Der Notenrechner ist öffentlich einsehbar auf GitHub
+          und dient auch als Lernprojekt für Webentwicklung.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 OPOR</p>
+    <p>
+      <a href="impressum.html">Impressum</a> |
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </footer>
+
+</body>
+</html>
