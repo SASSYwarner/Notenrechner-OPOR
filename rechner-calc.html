@@ -241,6 +241,30 @@
 </div>
 
 <script>
+  const editableCells = document.querySelectorAll('td[contenteditable="true"]');
+  editableCells.forEach(cell => {
+    cell.addEventListener("input", () => {
+      const selection = window.getSelection();
+      const range = selection.getRangeAt(0);
+      const caretPosition = range.startOffset;
+      let value = cell.textContent;
+      value = value.replace(/\D/g, "");
+      if (value !== "") {
+        let num = Math.min(parseInt(value, 10), 15);
+        value = num.toString();
+      }
+      cell.textContent = value;
+      const newRange = document.createRange();
+      const textNode = cell.firstChild;
+      if (textNode) {
+        const newPos = Math.min(caretPosition, textNode.length);
+        newRange.setStart(textNode, newPos);
+        newRange.collapse(true);
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+      }
+    });
+  });
     function CalcLk() {
         const table = document.getElementById("Notenpunktetabelle");
         let LkPunktzahl = 0;
