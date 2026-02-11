@@ -12,7 +12,7 @@
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       padding: 10px;
-      background-color: #f4f4f4;
+      background-color: #b3b1b1;
     }
 
     /* Wrapper für horizontales Scrollen */
@@ -25,7 +25,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: clamp(14px, 2.5vw, 18px);
-      background-color: #fff;
+      background-color: #ff0000;
     }
 
     #Notenpunktetabelle th,
@@ -34,13 +34,13 @@
       min-width: 70px;
       height: 40px;
       text-align: center;
-      border: 1px solid #bbb;
+      border: 1px solid #06003a;
     }
 
     /* Kopfzeile */
     #Notenpunktetabelle th {
-      background-color: #e4dcdc;
-      color: #444;
+      background-color: #ffffff;
+      color: #000000;
       position: sticky;
       top: 0;
       z-index: 1;
@@ -48,18 +48,22 @@
 
     /* Nicht editierbare Zellen */
     td:not([contenteditable="true"]) {
-      background-color: #eee;
-      color: #666;
+      background-color: #cfcbe2;
+      color: #000000;
+    }
+
+    #Notenpunktetabelle tr:nth-last-child(-n+5) td {
+      background-color: #ffffff !important;
     }
 
     /* Editierbare Zellen */
     td[contenteditable="true"] {
-      background-color: #fff;
-      caret-color: #4a90e2;
+      background-color: #ffffff;
+      caret-color: #e60000;
     }
 
     td[contenteditable="true"]:focus {
-      outline: 2px solid #4a90e2;
+      outline: 2px solid #fdffff;
       background-color: #fdfefe;
     }
 
@@ -71,8 +75,7 @@
     #Notenpunktetabelle tr:nth-last-child(3) td,
     #Notenpunktetabelle tr:nth-last-child(4) th,
     #Notenpunktetabelle tr:nth-last-child(4) td {
-      background-color: #dfe9f3;
-      font-weight: bold;
+      background-color: #ffffff; 
     }
 
 
@@ -82,7 +85,7 @@
       padding: 12px 20px;
       font-size: 16px;
       border: none;
-      background-color: #4a90e2;
+      background-color: #1c009b;
       color: white;
       border-radius: 8px;
       cursor: pointer;
@@ -90,7 +93,7 @@
     }
 
     button:hover {
-      background-color: #357abd;
+      background-color: #1c009b;
     }
 
     /* Extra Optimierung für kleine Displays */
@@ -155,9 +158,9 @@
 
   <tr>
     <th>5. Prüfungsfach</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td></td>
+    <td></td>
+    <td></td>
     <td contenteditable="true" inputmode="numeric" id="_5_4"></td>
     <td contenteditable="true" inputmode="numeric" id="_5_5"></td>
   </tr>
@@ -199,7 +202,7 @@
   </tr>
 
   <tr>
-    <td colspan="6" style="font-weight:bold;">Ergebnis / Summe</td>
+    <th colspan="6" style="font-weight:bold;">Ergebnis / Summe</th>
   </tr>
 
   <tr>
@@ -232,88 +235,99 @@
 </div>
 
 <script>
-  function getNumber(cell) {
-    const value = Number(cell.textContent.trim());
-    return isNaN(value) ? 0 : value;
-  }
+    function CalcLk() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let LkPunktzahl = 0;
 
-  function CalcGK() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
-
-    // 24 Grundkurse = alle "Weitere GK"-Zellen
-    for (let row = 3; row <= 9; row++) {
-      for (let col = 1; col <= 4; col++) {
-        const cell = table.rows[row].cells[col];
-        if (cell && cell.isContentEditable) {
-          sum += getNumber(cell);
+        for (let x = 1; x <= 4; x++) {
+            for (let y = 1; y <= 2; y++) {
+                LkPunktzahl += Number(table.rows[y].cells[x].textContent) || 0;
+            }
         }
-      }
+        return LkPunktzahl
     }
-    return sum;
-  }
 
-  function CalcLK() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
+    function CalcGk() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let GkPunktzahl = 0;
 
-    // LK = 1. & 2. Prüfungsfach, Q1–Q4
-    for (let row = 1; row <= 2; row++) {
-      for (let col = 1; col <= 4; col++) {
-        sum += getNumber(table.rows[row].cells[col]);
-      }
+        for (let x = 1; x <= 4; x++) {
+            for (let y = 3; y <= 9; y++) {
+                if(table.rows[y].cells[x].getAttribute("contenteditable")) {
+                    GkPunktzahl += Number(table.rows[y].cells[x].textContent) || 0;
+                }
+            }
+        }
+        return GkPunktzahl
     }
-    return sum;
-  }
 
-  function CalcPruefungen() {
-    const table = document.getElementById("Notenpunktetabelle");
-    let sum = 0;
+    function CalcPrüf() {
+        const table = document.getElementById("Notenpunktetabelle");
+        let PrüfPunktzahl = 0;
 
-    // Abiturprüfungen = Spalte 5 der Prüfungsfächer 1–5
-    for (let row = 1; row <= 5; row++) {
-      const cell = table.rows[row].cells[5];
-      if (cell && cell.isContentEditable) {
-        sum += getNumber(cell);
-      }
+        for (let y = 1; y <= 5; y++) {
+            PrüfPunktzahl += Number(table.rows[y].cells[5].textContent) || 0;
+        }
+        return PrüfPunktzahl
     }
-    return sum;
-  }
 
-  function CalcGes() {
-  const gkRaw = CalcGK();                 
-  const lkRaw = CalcLK();                 
-  const pruefRaw = CalcPruefungen();      
+    function CalcGes() {
+        let LkPunktzahl = CalcLk() * 2;
+        console.log(LkPunktzahl);
+        let GkPunktzahl = CalcGk();
+        console.log(GkPunktzahl);
+        let PrüfPunktzahl = CalcPrüf() * 4;
+        console.log(PrüfPunktzahl);
+        let Punktzahl = LkPunktzahl + GkPunktzahl + PrüfPunktzahl;
+        console.log(Punktzahl);
+        let Schnitt = Math.round(56.6 - Punktzahl / 18.0)/10;
+        console.log(Schnitt);
+        const table = document.getElementById("Notenpunktetabelle")
+        table.rows[11].cells[1].textContent = LkPunktzahl
+        table.rows[12].cells[1].textContent = GkPunktzahl
+        table.rows[13].cells[1].textContent = PrüfPunktzahl
+        table.rows[14].cells[1].textContent = Punktzahl
+        table.rows[15].cells[1].textContent = Schnitt
+        table.rows[16].cells[1].textContent = "Nein"
+        if(Punktzahl > 299) {
+          table.rows[16].cells[1].textContent = "Ja"
+        }
+    }
+    
+    function FillTable() {
+        const editableCells = document.querySelectorAll('td[contenteditable="true"]');
 
-  const gk = gkRaw;
-  const lk = lkRaw * 2;                   
-  const pruef = pruefRaw * 4;             
+        editableCells.forEach(cell => {
+        cell.textContent = 12
+      });
+    }
+    function saveRechnerData() {
 
-  const gesamt = gk + lk + pruef;
+    let LkPunktzahl = CalcLk() * 2;
+    let GkPunktzahl = CalcGk();
+    let PrüfPunktzahl = CalcPrüf() * 4;
+    let Punktzahl = LkPunktzahl + GkPunktzahl + PrüfPunktzahl;
+    let Schnitt = Math.round(56.6 - Punktzahl / 18.0)/10;
 
-  // Abinote nach deiner Formel
-  let abinote = 5.66 - (gesamt / 180);
-  abinote = Math.round(abinote * 10) / 10;
+    // Daten speichern
+    localStorage.setItem("lk", LkPunktzahl);
+    localStorage.setItem("gk", GkPunktzahl);
+    localStorage.setItem("pruef", PrüfPunktzahl);
+    localStorage.setItem("gesamt", Punktzahl);
+    localStorage.setItem("note", Schnitt);
 
-  if (abinote < 1.0) abinote = "1,0";
-  else if (abinote > 4.0) abinote = "nicht bestanden";
-  else abinote = abinote.toFixed(1).replace(".", ",");
-
-  document.getElementById("gkSumme").textContent = gk;
-  document.getElementById("lkSumme").textContent = lk;
-  document.getElementById("pruefSumme").textContent = pruef;
-  document.getElementById("gesamtSumme").textContent = gesamt;
-  document.getElementById("abinote").textContent = abinote;
+    // Weiterleitung
+    window.location.href = "rechner.html";
 }
 
-  function FillTable() {
-      document.querySelectorAll('td[contenteditable="true"]').forEach(td => {
-      td.textContent = "12";
-      });
-  }
+
+
 </script>
 <button onclick="FillTable()">füllen</button>
 <button onclick="CalcGes()">Fertig</button>
+<button onclick="saveRechnerData()">Speichern</button>
+
+
 
 </body>
 </html>
