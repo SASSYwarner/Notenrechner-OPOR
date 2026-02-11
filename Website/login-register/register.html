@@ -4,64 +4,137 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OPOR – Register</title>
+
 <style>
-body { margin:0; font-family:"Times New Roman", serif; background:#0e0e0e; color:#9baebe; display:flex; justify-content:center; align-items:center; height:100vh; }
-.container { background:#111; padding:40px; border-radius:12px; width:350px; text-align:center; }
-h1 { margin-bottom:20px; }
-input { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:none; }
-button { width:100%; padding:10px; margin-top:12px; border:none; border-radius:6px; background:#325774; color:white; cursor:pointer; font-weight:bold; }
-button:hover { background:#4d7ea8; }
-.error { color:#ff6b6b; margin:8px 0; text-align:center; }
-.login-link { color:#9baebe; margin-top:15px; display:block; font-size:0.9em; cursor:pointer; }
-.login-link:hover { text-decoration:underline; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg,#0f1f2b,#152f44);
+}
+
+.card {
+  width: 360px;
+  padding: 40px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #325774;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4d7ea8;
+}
+
+.error {
+  color: #ff9b9b;
+  margin-bottom: 10px;
+}
+
+.small {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #9fb7cc;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
-<div class="container">
+
+<div class="card">
   <h1>Registrieren</h1>
-  <input type="text" id="username" placeholder="Username" required>
-  <input type="email" id="email" placeholder="Email" required>
-  <input type="password" id="password" placeholder="Password" required>
-  <div class="error" id="error"></div>
+  <div id="error" class="error"></div>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Passwort">
   <button id="registerBtn">Registrieren</button>
-  <span class="login-link" onclick="window.location.href='auth.html'">Schon ein Account? Login hier</span>
+  <div class="small" onclick="location.href='auth.html'">Schon Account? Login</div>
 </div>
 
-<script>
-const errorDiv = document.getElementById("error");
-const btn = document.getElementById("registerBtn");
+<script type="module">
+  // Import Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-btn.onclick = async () => {
-    const username = document.getElementById("username").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+  const firebaseConfig = {
+    apiKey: "AIzaSyClEpvTOnBDO5Vyy4s1oKK_KUan3MCIE-w",
+    authDomain: "opor-notenrechner.firebaseapp.com",
+    projectId: "opor-notenrechner",
+    storageBucket: "opor-notenrechner.firebasestorage.app",
+    messagingSenderId: "50802139849",
+    appId: "1:50802139849:web:ec9a315405d0c6d2bd2318"
+  };
 
-    if(!username || !email || !password){
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Wait for DOM to load
+  document.addEventListener("DOMContentLoaded", () => {
+    const registerBtn = document.getElementById("registerBtn");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const errorDiv = document.getElementById("error");
+
+    registerBtn.addEventListener("click", async () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      errorDiv.textContent = ""; // clear previous error
+
+      if (!email || !password) {
         errorDiv.textContent = "Bitte alle Felder ausfüllen!";
         return;
-    }
+      }
 
-    try {
-        const res = await fetch("/api/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, email, password })
-        });
-        const data = await res.json();
-
-        if(res.ok){
-            // Token speichern
-            localStorage.setItem("opor_token", data.token);
-            localStorage.setItem("opor_currentUser", data.username);
-            window.location.href = "profile.html";
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        // Redirect to profile
+        window.location.href = "profile.html";
+      } catch (error) {
+        // Show readable error
+        if (error.code === "auth/email-already-in-use") {
+          errorDiv.textContent = "Diese Email ist bereits registriert!";
+        } else if (error.code === "auth/invalid-email") {
+          errorDiv.textContent = "Bitte gültige Email eingeben!";
+        } else if (error.code === "auth/weak-password") {
+          errorDiv.textContent = "Passwort zu schwach (mindestens 6 Zeichen)!";
         } else {
-            errorDiv.textContent = data.error || "Server Fehler";
+          errorDiv.textContent = error.message;
         }
-    } catch(e) {
-        errorDiv.textContent = "Server Fehler – bitte prüfen, ob Node läuft!";
-        console.error(e);
-    }
-};
+      }
+    });
+  });
 </script>
+
 </body>
 </html>
