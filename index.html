@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OPOR – Notenrechner</title>
+  <style>
+    .nav button {
+        border: 1px solid red;
+        font-size: 150%;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', function() {
+        for (let button of document.querySelectorAll(".nav button")) {
+            button.addEventListener("click", function(e) {
+                // 1. get target div
+                let target = button.getAttribute("data-target");
+                // 2. hide all content divs
+                for (let div of document.querySelectorAll(".content div")) {
+                    div.style.display = "none";
+                }
+                // 3. show target div
+                document.querySelector(`.content #${target}`).style.display = "block";
+            });
+        }
+    });
+  </script>
+</head>
+<body>
+    <div class="nav">
+        <button data-target="div1">Div 1</button>
+        <button data-target="div2">Div 2</button>
+        <button data-target="div3">Div 3</button>
+    </div>
+    <div class="content">
+        <div id="div1" style="display: block;">
+            <h1>Div 1</h1>
+        </div>
+        <div id="div2" style="display: none;">
+            <h1>Div 2</h1>
+        </div>
+        <div id="div3" style="display: none;">
+            <h1>Div 3</h1>
+        </div>
+    </div>
+</body>
+</html>
