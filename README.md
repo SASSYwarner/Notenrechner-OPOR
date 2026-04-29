@@ -8,7 +8,7 @@ Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz 
 ---
 
 ## Projektstruktur
-- Der Ordner [Website](https://github.com/SASSYwarner/Notenrechner-OPOR/tree/main/Website) enthält alle Dateien für Design und Aufbau der Webseite.
+- (https://github.com/SASSYwarner/Notenrechner-OPOR/index.html) enthält alle Dateien für Design und Aufbau der Webseite.
 - Der Notenrechner ist als eigene Datei umgesetzt und direkt in die Webseite eingebettet.
   Dadurch können Änderungen an der Berechnungslogik einfach und ohne großen Aufwand vorgenommen werden.
 - ## Rechner-Struktur
