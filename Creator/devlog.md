@@ -20,7 +20,7 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 ## Arbeitsteilung
 - **Mia**
   - Website-Design
-  - probiert MongoDB, Node.js und Firebase (wird nicht weiter verwendet)
+  - MongoDB, Node.js und Firebase (wird nicht weiter verwendet)
   - Erstellung von einem einheitlichen index.html und style.css
 
 - **Felix**
@@ -70,7 +70,7 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 - HTML
 - CSS
 - JavaScript
-- ## Einst verwendet:
+## Einst verwendet:
 - Node.js
 - MongoDB (Compass)
 - Firebase (Google Datenbank)
