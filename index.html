@@ -1,48 +1,181 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OPOR – Notenrechner</title>
+  <title>OPOR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
   <style>
     .nav button {
-        border: 1px solid red;
-        font-size: 150%;
+      border: 1px solid rgb(80, 2, 2);
+      font-size: 150%;
+    }
+
+    /* Hide sections by default */
+    .content > div {
+      display: none;
+    }
+
+    /* Show sections that have the 'active' class */
+    .content .active {
+      display: block;
     }
   </style>
   <script>
     window.addEventListener('load', function() {
-        for (let button of document.querySelectorAll(".nav button")) {
-            button.addEventListener("click", function(e) {
-                // 1. get target div
-                let target = button.getAttribute("data-target");
-                // 2. hide all content divs
-                for (let div of document.querySelectorAll(".content div")) {
-                    div.style.display = "none";
-                }
-                // 3. show target div
-                document.querySelector(`.content #${target}`).style.display = "block";
-            });
-        }
+      // Set the default active section (div1)
+      document.querySelector("#div1").classList.add('active');
+
+      // Event listener for navigation buttons
+      for (let button of document.querySelectorAll(".nav button")) {
+        button.addEventListener("click", function(e) {
+          // Get the target div id from the button's data-target attribute
+          let target = button.getAttribute("data-target");
+
+          // Remove the 'active' class from all sections
+          for (let div of document.querySelectorAll(".content div")) {
+            div.classList.remove('active');
+          }
+
+          // Add the 'active' class to the selected section
+          document.querySelector(`#${target}`).classList.add('active');
+        });
+      }
     });
   </script>
 </head>
 <body>
-    <div class="nav">
-        <button data-target="div1">Div 1</button>
-        <button data-target="div2">Div 2</button>
-        <button data-target="div3">Div 3</button>
+  <div class="nav">
+    <button data-target="div1">Home</button>
+    <button data-target="div2">Rechner</button>
+    <button data-target="div3">Über</button>
+  </div>
+
+  <div class="content">
+    <div id="div1">
+      <!-- HERO (BLACK WORLD) -->
+      <section id="hero">
+        <p id="welcome">Willkommen zu</p>
+        <img id="heroImg" src="https://f2.toyhou.se/file/f2-toyhou-se/images/113239969_rN9116xpWXO6uDq.png" alt="Hero Image" />
+        <h1 id="opor">OPOR</h1>
+      </section>
+
+      <!-- ===== NEW SITE STARTS HERE ===== -->
+      <main class="site-world">
+        <section class="ContentContainer">
+          <div class="Content">
+            <p>
+              Du willst den Überblick über deine Noten behalten, ohne stundenlang zu rechnen? 
+              Wir auch! Deshalb haben wir als Schüler ein praktisches Softwareprojekt entwickelt: 
+              unseren Notenrechner für die Oberstufe. Einfach Noten eintragen, Gewichtungen einstellen – 
+              und schon siehst du sofort, wie deine Endnote aussehen könnte. Clever, schnell und von 
+              Schülern für Schüler gemacht!
+            </p>
+            <p id="opp">ONE PLACE ONE RESULT</p>
+          </div>
+        </section>
+
+        <section class="photo-banner"></section>
+      </main>
     </div>
-    <div class="content">
-        <div id="div1" style="display: block;">
-            <h1>Div 1</h1>
-        </div>
-        <div id="div2" style="display: none;">
-            <h1>Div 2</h1>
-        </div>
-        <div id="div3" style="display: none;">
-            <h1>Div 3</h1>
-        </div>
+
+    <div id="div2">
+      <!-- HERO -->
+  <section class="lala">
+    <div class="hero-content">
+      <h1>OPOR</h1>
+      <h2>Abitur-Notenrechner</h2>
+
+      <p>
+        Trage deine Kurs- und Prüfungsnoten ein und erhalte sofort deine
+        Gesamtpunktzahl sowie deine voraussichtliche Abiturnote –
+        übersichtlich, transparent und ohne Rechnerei.
+      </p>
+
+      <a class="cta" href="rechner.html">
+        Rechner starten
+      </a>
     </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="info">
+    <h3>Wie funktioniert der Rechner?</h3>
+    <p>
+      Der OPOR-Rechner berücksichtigt Leistungs- und Grundkurse sowie
+      Abiturprüfungen nach dem offiziellen Punktesystem der Oberstufe.
+      Alle Berechnungen erfolgen direkt im Browser – keine Daten werden gespeichert.
+    </p>
+  </section>
+
+    </div>
+
+    <div id="div3">
+      <!-- BANNER -->
+<section class="photo-banner"></section>
+
+<!-- MAIN -->
+<main>
+  <h1>Über OPOR</h1>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h2>Projekt</h2>
+      <p>
+        OPOR ist ein schulisches Softwareprojekt, entwickelt von Schülern der Oberstufe,
+        mit dem Ziel, Noten schnell berechnen zu können.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Schule</h2>
+      <p>
+        Entwickelt am Gymnasium Steglitz (Q2).  
+        Von Schülern – für Schüler.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Datenschutz</h2>
+      <p>
+        Es werden keine personenbezogenen Daten gespeichert.
+        Alle Berechnungen erfolgen lokal im Browser.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Open Source</h2>
+      <p>
+        Der Notenrechner ist öffentlich einsehbar auf GitHub.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+
+    </div>
+  </div>
+
+
+    <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2023 OPOR. All Rights Reserved.</p>
+      <p>
+        <a href="https://github.com/SASSYwarner/Notenrechner-OPOR" target="_blank">GitHub</a> | 
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutz</a>
+      </p>
+    </div>
+  </footer>
+
+  
 </body>
 </html>
+
+
+
