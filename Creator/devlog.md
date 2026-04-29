@@ -20,8 +20,8 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 ## Arbeitsteilung
 - **Mia**
   - Website-Design
-  - Einrichtung von Node.js
-  - Einrichtung von MongoDB Compass und Verbindung über die Windows Shell
+  - probiert MongoDB, Node.js und Firebase (wird nicht weiter verwendet)
+  - Erstellung von einem einheitlichen index.html und style.css
 
 - **Felix**
   - Entwicklung des Notenrechners
@@ -70,5 +70,19 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 - HTML
 - CSS
 - JavaScript
+- ## Einst verwendet:
 - Node.js
 - MongoDB (Compass)
+- Firebase (Google Datenbank)
+
+
+
+
+## Stand 29.04.2026
+
+- index.html
+- style.css
+- Kein MongoDB (Compass)
+- Firebase Datenbank gelöscht
+- kein speichern von Daten
+- "nur" home, Rechner und Über
