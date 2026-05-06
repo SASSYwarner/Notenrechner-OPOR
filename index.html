@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,58 +8,59 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-  <style>
-    .nav button {
-      border: 1px solid rgb(80, 2, 2);
-      font-size: 150%;
+<style>
+
+  /* Hide sections by default */
+  .content>div {
+    display: none;
+  }
+
+  /* Show sections that have the 'active' class */
+  .content .active {
+    display: block;
+  }
+</style>
+<script>
+  window.addEventListener('load', function () {
+    // Set the default active section (div1)
+    document.querySelector("#div1").classList.add('active');
+
+    // Event listener for navigation buttons
+    for (let button of document.querySelectorAll("[data-target]")) {
+      button.addEventListener("click", function (e) {
+        // Get the target div id from the button's data-target attribute
+        let target = button.getAttribute("data-target");
+
+        // Remove the 'active' class from all sections
+        for (let div of document.querySelectorAll(".content div")) {
+          div.classList.remove('active');
+        }
+
+        // Add the 'active' class to the selected section
+        document.querySelector(`#${target}`).classList.add('active');
+      });
     }
-
-    /* Hide sections by default */
-    .content > div {
-      display: none;
-    }
-
-    /* Show sections that have the 'active' class */
-    .content .active {
-      display: block;
-    }
-  </style>
-  <script>
-    window.addEventListener('load', function() {
-      // Set the default active section (div1)
-      document.querySelector("#div1").classList.add('active');
-
-      // Event listener for navigation buttons
-      for (let button of document.querySelectorAll(".nav button")) {
-        button.addEventListener("click", function(e) {
-          // Get the target div id from the button's data-target attribute
-          let target = button.getAttribute("data-target");
-
-          // Remove the 'active' class from all sections
-          for (let div of document.querySelectorAll(".content div")) {
-            div.classList.remove('active');
-          }
-
-          // Add the 'active' class to the selected section
-          document.querySelector(`#${target}`).classList.add('active');
-        });
-      }
-    });
-  </script>
+  });
+</script>
 </head>
+
 <body>
   <div class="nav">
-    <button data-target="div1">Home</button>
-    <button data-target="div2">Rechner</button>
-    <button data-target="div3">Über</button>
-  </div>
+  <button class="cta" data-target="div1">Home</button>
+  <button class="cta" data-target="div2">Rechner</button>
+  <button class="cta" data-target="div3">Über</button>
+  <button class="cta" data-target="div5">Kontakt</button>
+</div>
 
   <div class="content">
+
+
     <div id="div1">
       <!-- HERO (BLACK WORLD) -->
       <section id="hero">
         <p id="welcome">Willkommen zu</p>
-        <img id="heroImg" src="https://f2.toyhou.se/file/f2-toyhou-se/images/113239969_rN9116xpWXO6uDq.png" alt="Hero Image" />
+        <img id="heroImg" src="https://f2.toyhou.se/file/f2-toyhou-se/images/113239969_rN9116xpWXO6uDq.png"
+          alt="Hero Image" />
         <h1 id="opor">OPOR</h1>
       </section>
 
@@ -67,10 +69,10 @@
         <section class="ContentContainer">
           <div class="Content">
             <p>
-              Du willst den Überblick über deine Noten behalten, ohne stundenlang zu rechnen? 
-              Wir auch! Deshalb haben wir als Schüler ein praktisches Softwareprojekt entwickelt: 
-              unseren Notenrechner für die Oberstufe. Einfach Noten eintragen, Gewichtungen einstellen – 
-              und schon siehst du sofort, wie deine Endnote aussehen könnte. Clever, schnell und von 
+              Du willst den Überblick über deine Noten behalten, ohne stundenlang zu rechnen?
+              Wir auch! Deshalb haben wir als Schüler ein praktisches Softwareprojekt entwickelt:
+              unseren Notenrechner für die Oberstufe. Einfach Noten eintragen, Gewichtungen einstellen –
+              und schon siehst du sofort, wie deine Endnote aussehen könnte. Clever, schnell und von
               Schülern für Schüler gemacht!
             </p>
             <p id="opp">ONE PLACE ONE RESULT</p>
@@ -83,99 +85,259 @@
 
     <div id="div2">
       <!-- HERO -->
-  <section class="lala">
-    <div class="hero-content">
-      <h1>OPOR</h1>
-      <h2>Abitur-Notenrechner</h2>
+      <section class="lala">
+        <div class="hero-content">
+          <h1>OPOR</h1>
+          <h2>Abitur-Notenrechner</h2>
 
-      <p>
-        Trage deine Kurs- und Prüfungsnoten ein und erhalte sofort deine
-        Gesamtpunktzahl sowie deine voraussichtliche Abiturnote –
-        übersichtlich, transparent und ohne Rechnerei.
-      </p>
+          <p>
+            Trage deine Kurs- und Prüfungsnoten ein und erhalte sofort deine
+            Gesamtpunktzahl sowie deine voraussichtliche Abiturnote –
+            übersichtlich, transparent und ohne Rechnerei.
+          </p>
 
-      <a class="cta" href="rechner.html">
-        Rechner starten
-      </a>
-    </div>
-  </section>
+          <div>
+          <button class="cta" data-target="div4">
+              Rechner starten
+          </button>
+        </div>
 
-  <!-- INFO -->
-  <section class="info">
-    <h3>Wie funktioniert der Rechner?</h3>
-    <p>
-      Der OPOR-Rechner berücksichtigt Leistungs- und Grundkurse sowie
-      Abiturprüfungen nach dem offiziellen Punktesystem der Oberstufe.
-      Alle Berechnungen erfolgen direkt im Browser – keine Daten werden gespeichert.
-    </p>
-  </section>
+      </section>
+
+
+
+      <!-- INFO -->
+      <section class="info">
+        <h3>Wie funktioniert der Rechner?</h3>
+        <p>
+          Der OPOR-Rechner berücksichtigt Leistungs- und Grundkurse sowie
+          Abiturprüfungen nach dem offiziellen Punktesystem der Oberstufe.
+          Alle Berechnungen erfolgen direkt im Browser – keine Daten werden gespeichert.
+        </p>
+      </section>
 
     </div>
 
     <div id="div3">
       <!-- BANNER -->
-<section class="photo-banner"></section>
+      <section class="photo-banner"></section>
 
-<!-- MAIN -->
-<main>
-  <h1>Über OPOR</h1>
+      <!-- MAIN -->
+      <main>
+        <h1>Über OPOR</h1>
 
-  <div class="card-grid">
+        <div class="card-grid">
 
-    <div class="card">
-      <h2>Projekt</h2>
-      <p>
-        OPOR ist ein schulisches Softwareprojekt, entwickelt von Schülern der Oberstufe,
-        mit dem Ziel, Noten schnell berechnen zu können.
-      </p>
+          <div class="card">
+            <h2>Projekt</h2>
+            <p>
+              OPOR ist ein schulisches Softwareprojekt, entwickelt von Schülern der Oberstufe,
+              mit dem Ziel, Noten schnell berechnen zu können.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>Schule</h2>
+            <p>
+              Entwickelt am Gymnasium Steglitz (Q2).
+              Von Schülern – für Schüler.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>Datenschutz</h2>
+            <p>
+              Es werden keine personenbezogenen Daten gespeichert.
+              Alle Berechnungen erfolgen lokal im Browser.
+            </p>
+          </div>
+
+          <div class="card">
+            <h2>Open Source</h2>
+            <p>
+              Der Notenrechner ist öffentlich einsehbar auf GitHub.
+            </p>
+          </div>
+
+        </div>
+      </main>
+
+
     </div>
 
-    <div class="card">
-      <h2>Schule</h2>
-      <p>
-        Entwickelt am Gymnasium Steglitz (Q2).  
-        Von Schülern – für Schüler.
-      </p>
+    <div id="div4">
+
+        <!-- HERO -->
+        <section class="opor">
+          <div>
+            <h1>OPOR</h1>
+            <p>Abitur-Notenrechner</p>
+          </div>
+        </section>
+
+
+
+        <!-- CALCULATOR -->
+        <section class="calc-wrapper">
+          <div class="calc-frame">
+            <iframe src="rechner-calc.html"></iframe>
+          </div>
+        </section>
+
+        <!-- INSTRUCTIONS -->
+        <section class="info">
+          <div class="info-content">
+            <h2>Hinweise zur Nutzung</h2>
+
+            <p>
+              Tragen Sie die erreichten Notenpunkte in die entsprechenden Felder ein.
+              Leere Felder werden automatisch als 0 Punkte gewertet.
+            </p>
+
+            <p>
+              Die Berechnung erfolgt nach dem gültigen Punktesystem der gymnasialen
+              Oberstufe. Die Ergebnisse dienen zur Orientierung und ersetzen keine
+              offizielle Abiturberechnung.
+            </p>
+
+            <p>
+              Alle Berechnungen erfolgen lokal im Browser. Es werden keine Daten gespeichert.
+            </p>
+          </div>
+        </section>
     </div>
 
-    <div class="card">
-      <h2>Datenschutz</h2>
-      <p>
-        Es werden keine personenbezogenen Daten gespeichert.
-        Alle Berechnungen erfolgen lokal im Browser.
-      </p>
-    </div>
+    <div id="div5">
 
-    <div class="card">
-      <h2>Open Source</h2>
-      <p>
-        Der Notenrechner ist öffentlich einsehbar auf GitHub.
-      </p>
-    </div>
+        <main>
+  <h1>Kontakt zu OPOR</h1>
 
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/new-post.png" class="icon">
+    E-Mail
+  </h2>
+  <p><a href="mailto:opor.notenrechner@gmail.com">opor.notenrechner@gmail.com</a></p>
+
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/link.png" class="icon">
+    Links
+  </h2>
+  <p><a href="https://gymnasiumsteglitz.de/" target="_blank">Gymnasium Steglitz</a></p>
+  <p><a href="https://dashboard.gymnasiumsteglitz.de/" target="_blank">Dashboard</a></p>
+  <p><a href="https://github.com/SASSYwarner/Notenrechner-OPOR" target="_blank">GitHub Repository</a></p>
+
+  <h2>
+    <img src="https://img.icons8.com/ios-filled/50/325774/marker.png" class="icon">
+    Adresse
+  </h2>
+  <div class="address">
+    <p>Gymnasium Steglitz</p>
+    <p>Heesestraße 15</p>
+    <p>12169 Berlin</p>
+    <p>Telefon: 030 93951937</p>
+  </div>
+
+  <div class="notice">
+    Alle Angaben zu uns und unserer App erfolgen schulbezogen.
+    Bitte kontaktiert uns ausschließlich über die oben angegebene E-Mail
+    für Anfragen zum Notenrechner.
   </div>
 </main>
-
-
     </div>
+
+    <div id="div6">
+  <main>
+    <h1>Impressum</h1>
+
+    <section>
+      <p>OPOR – Notenrechner</p>
+      <p>Schulisches Projekt</p>
+      <p>Gymnasium Steglitz</p>
+      <p>Heesestraße 15</p>
+      <p>12169 Berlin</p>
+    </section>
+
+    <section>
+      <h2>Kontakt</h2>
+      <p>E-Mail: opor.notenrechner@gmail.com</p>
+    </section>
+
+    <section>
+      <h2>Verantwortlich für den Inhalt</h2>
+      <p>Schülerprojekt der Oberstufe (Q2)</p>
+      <p>Gymnasium Steglitz</p>
+    </section>
+
+    <section>
+      <h2>Haftungshinweis</h2>
+      <p>
+        Dieses Projekt dient ausschließlich schulischen und informativen Zwecken.
+        Trotz sorgfältiger Erstellung übernehmen wir keine Haftung für die Richtigkeit
+        der bereitgestellten Inhalte.
+      </p>
+    </section>
+  </main>
+</div>
+
+
+
+
+<div id="div7">
+  <main>
+    <h1>Datenschutzerklärung</h1>
+
+    <h2>Allgemeine Hinweise</h2>
+    <p>
+      Der Schutz eurer persönlichen Daten ist uns wichtig.
+      Diese Website ist ein schulisches Projekt und erhebt keine personenbezogenen Daten.
+    </p>
+
+    <h2>Datenerfassung</h2>
+    <p>
+      Es werden keine Daten gespeichert, ausgewertet oder an Dritte weitergegeben.
+      Alle Berechnungen im Notenrechner erfolgen ausschließlich lokal im Browser.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      Diese Website verwendet keine Cookies.
+    </p>
+
+    <h2>Externe Links</h2>
+    <p>
+      Für Inhalte externer Seiten übernehmen wir keine Verantwortung.
+    </p>
+
+    <h2>Kontakt</h2>
+    <p>
+      Bei Fragen:<br>
+      <strong>opor.notenrechner@gmail.com</strong>
+    </p>
+  </main>
+</div>
+
   </div>
 
 
-    <!-- Footer -->
+
+
+
+
+
+
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
-      <p>&copy; 2023 OPOR. All Rights Reserved.</p>
+      <p>&copy; 2026 OPOR. All Rights Reserved.</p>
       <p>
-        <a href="https://github.com/SASSYwarner/Notenrechner-OPOR" target="_blank">GitHub</a> | 
-        <a href="impressum.html">Impressum</a> |
-        <a href="datenschutz.html">Datenschutz</a>
+        <a href="https://github.com/SASSYwarner/Notenrechner-OPOR" target="_blank">GitHub</a> |
+      <a href="#" data-target="div6">Impressum</a> |
+      <a href="#" data-target="div7">Datenschutz</a>
       </p>
     </div>
   </footer>
 
-  
+
 </body>
+
 </html>
-
-
-
