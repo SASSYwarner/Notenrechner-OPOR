@@ -12,7 +12,7 @@ Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz 
 - Der Notenrechner ist als eigene Datei umgesetzt und direkt in die Webseite eingebettet.
   Dadurch können Änderungen an der Berechnungslogik einfach und ohne großen Aufwand vorgenommen werden.
 - ## Rechner-Struktur
-- 
+  
 - [rechner-calc.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/Website/Rechner/rechner-calc.html)  
   Enthält den eigentlichen Rechner, samt Funtion und Tabelle
 
