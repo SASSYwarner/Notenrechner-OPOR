@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OPOR</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
 </head>
 
 <style>
@@ -20,28 +21,7 @@
     display: block;
   }
 </style>
-<script>
-  window.addEventListener('load', function () {
-    // Set the default active section (div1)
-    document.querySelector("#div1").classList.add('active');
 
-    // Event listener for navigation buttons
-    for (let button of document.querySelectorAll("[data-target]")) {
-      button.addEventListener("click", function (e) {
-        // Get the target div id from the button's data-target attribute
-        let target = button.getAttribute("data-target");
-
-        // Remove the 'active' class from all sections
-        for (let div of document.querySelectorAll(".content div")) {
-          div.classList.remove('active');
-        }
-
-        // Add the 'active' class to the selected section
-        document.querySelector(`#${target}`).classList.add('active');
-      });
-    }
-  });
-</script>
 </head>
 
 <body>
