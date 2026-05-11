@@ -6,78 +6,38 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: black; /* Hero world */
+  background: black;
   font-family: "Times New Roman", serif;
   color: #9baebe;
-  overflow-x: hidden; /* Prevent overflow */
+  overflow-x: hidden;
 }
 
-/* ===================== EDGE TRIGGER ===================== */
-.edge-trigger {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 14px;
-  height: 100vh;
-  z-index: 1000;
+/* ===================== LAYOUT ===================== */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.edge-indicator {
-  position: absolute;
-  top: 50%;
-  left: 4px;
-  width: 6px;
-  height: 60px;
-  background: #9baebe;
-  opacity: 0.35;
-  transform: translateY(-50%);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.content {
+  flex: 1;
 }
 
-.edge-trigger:hover .edge-indicator {
-  opacity: 0.8;
-  transform: translateY(-50%) scaleY(1.2);
+/* ===================== NAV ===================== */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
-/* ===================== SIDEBAR ===================== */
-.sidenav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 180px;
-  height: 100vh;
-  background: #111;
-  padding-top: 60px;
-  transform: translateX(-100%);
-  transition: transform 0.35s ease;
-  z-index: 999;
-}
-
-.edge-trigger:hover + .sidenav,
-.sidenav:hover {
-  transform: translateX(0);
-}
-
-.sidenav a {
-  display: block;
-  padding: 12px 20px;
-  font-size: 22px;
-  color: #818181;
-  text-decoration: none;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* ===================== HERO (UNCHANGED) ===================== */
+/* ===================== HERO ===================== */
 #hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  position: relative;
   text-align: center;
   min-height: 100vh;
 }
@@ -85,36 +45,27 @@ html, body {
 #welcome {
   font-size: clamp(24px, 4vw, 64px);
   margin: 0;
-  z-index: 3;
 }
 
 #heroImg {
   width: clamp(200px, 40vw, 400px);
-  height: auto;
-  z-index: 2;
 }
 
 #opor {
   font-size: clamp(150px, 25vw, 350px);
   line-height: 0.9;
   margin: 0;
-  z-index: 1;
-  color: #9baebe;
-  user-select: none;
 }
 
-/* ===================== NEW SITE WORLD ===================== */
+/* ===================== WHITE WORLD ===================== */
 .site-world {
   background: white;
   color: black;
-  min-height: 100vh;
-  padding-bottom: 75px; /* Added padding-bottom to avoid footer collision */
 }
 
 /* ===================== CONTENT ===================== */
 .ContentContainer {
-  background: white;
-  padding: 75px 0;
+  padding: 75px 20px 0;
 }
 
 .Content {
@@ -122,20 +73,19 @@ html, body {
   margin: 0 auto;
 }
 
-#opp {
-  width: 100%;
-  font-size: clamp(36px, 6vw, 120px);
-  text-align: center;
-  font-weight: bold;
-  margin: 60px 0;
-  z-index: 2;
-  color: #325774 !important;
-  line-height: 1.1;
-}
-
 .Content p {
   margin: 75px 0;
   line-height: 28px;
+}
+
+/* FIX overlap */
+#opp {
+  font-size: clamp(48px, 8vw, 140px);
+  text-align: center;
+  font-weight: bold;
+  margin: 120px 0 80px;
+  color: #325774;
+  line-height: 1.1;
 }
 
 /* ===================== PHOTO BANNER ===================== */
@@ -145,24 +95,20 @@ html, body {
   background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/113944952_tjQyn3jwMlQPwOP.jpg');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   margin: 0;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: hidden; /* Ensure content doesn't overflow */
 }
 
-/* ===================== BUTTON (Div 2) ===================== */
+/* ===================== BUTTON ===================== */
 .cta {
   display: inline-block;
   padding: 16px 40px;
   font-size: 18px;
-  text-decoration: none;
   color: black;
   background: #9baebe;
   border-radius: 50px;
-  transition: transform 0.2s ease, background 0.2s ease;
-  margin-top: 20px; /* Make sure button is visible */
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .cta:hover {
@@ -170,7 +116,7 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* ===================== DIV 2 ===================== */
+/* ===================== DIV 2 (RECHNER PAGE) ===================== */
 .lala {
   min-height: 100vh;
   display: flex;
@@ -180,33 +126,26 @@ html, body {
   padding: 40px 20px;
 }
 
-.lala-content {
-  max-width: 800px;
-}
-
+/* FIX small title */
 .lala h1 {
-  font-size: clamp(48px, 10vw, 120px);
+  font-size: clamp(80px, 14vw, 180px);
   margin: 0;
-  letter-spacing: 2px;
 }
 
 .lala h2 {
-  font-size: clamp(20px, 4vw, 36px);
-  font-weight: normal;
+  font-size: clamp(28px, 5vw, 48px);
   margin: 20px 0 40px;
-  color: #9baebe;
-  opacity: 0.9;
 }
 
 .lala p {
-  font-size: 18px;
-  line-height: 1.6;
   max-width: 600px;
   margin: 0 auto 50px;
   color: #b7c6d3;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
-/* ===================== WHITE SECTION (Div 2) ===================== */
+/* ===================== INFO (WHITE SECTION) ===================== */
 .info {
   background: white;
   color: black;
@@ -217,21 +156,22 @@ html, body {
 .info h3 {
   font-size: 32px;
   margin-bottom: 20px;
-  color: #9baebe;
+  color: #325774;
 }
 
 .info p {
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.7;
   font-size: 18px;
+  line-height: 1.7;
 }
 
-/* ===================== DIV 3 ===================== */
+/* ===================== DIV 3 (CARDS) ===================== */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
+  padding: 40px;
 }
 
 .card {
@@ -239,14 +179,9 @@ html, body {
   padding: 40px 30px;
   cursor: pointer;
   transition: 0.3s;
-  min-height: 160px;
 }
 
-.card h2 {
-  font-size: 28px;
-  margin: 0;
-}
-
+/* RESTORE hover reveal */
 .card p {
   margin-top: 20px;
   line-height: 1.6;
@@ -266,153 +201,58 @@ html, body {
   max-height: 300px;
 }
 
+/* ===================== DIV 4 ===================== */
+.opor {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.opor h1 {
+  font-size: clamp(80px, 12vw, 160px);
+}
+
+.opor p {
+  font-size: clamp(22px, 4vw, 36px);
+}
+
+/* CALCULATOR */
+.calc-wrapper {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.calc-frame {
+  background: white;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+iframe {
+  width: 100%;
+  height: 1125px;
+  border: none;
+}
+
 /* ===================== FOOTER ===================== */
 .site-footer {
-  background-color: #111;        /* Dark background */
-  color: #9baebe;                /* Text color */
+  background: #111;
+  color: #9baebe;
   text-align: center;
   padding: 30px 20px;
-  font-size: 16px;
-  line-height: 1.5;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  margin-top: auto;
 }
 
 .site-footer a {
   color: #9baebe;
   text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.3s;
 }
 
 .site-footer a:hover {
-  color: #fff;
+  color: white;
 }
-
-.footer-content p {
-  margin: 5px 0;
-}
-
-/* To ensure the footer stays at the bottom, apply flexbox */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* Content area should take available space */
-.content {
-  flex: 1;
-}
-
-
-
-
-
-/*div4*/
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Times New Roman", serif;
-      background: black;
-      color: #9baebe;
-    }
-
-    /* ===== HERO ===== */
-    .opor {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .opor h1 {
-      font-size: clamp(60px, 12vw, 150px);
-      margin: 0;
-      letter-spacing: 4px;
-    }
-
-    .opor p {
-      font-size: clamp(18px, 4vw, 28px);
-      margin-top: 20px;
-      opacity: 0.85;
-    }
-
-    /* ===== CALCULATOR FRAME ===== */
-    .calc-wrapper {
-      background: black;
-      padding: 80px 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .calc-frame {
-      background: white;
-      width: 100%;
-      max-width: 1100px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    }
-
-    iframe {
-      width: 100%;
-      height: 1125px;
-      border: none;
-      display: block;
-    }
-
-    /* ===== INSTRUCTIONS ===== */
-    .info {
-      background: black;
-      padding: 100px 20px;
-    }
-
-    .info-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .info h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      color: #9baebe;
-    }
-
-    .info p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #b7c6d3;
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 600px) {
-      iframe { height: 1300px; }
-    }
-
-/* ===== GLOBAL BUTTON STYLE ===== */
-.cta {
-  display: inline-block;
-  padding: 16px 40px;
-  font-size: 18px;
-  font-family: "Times New Roman", serif;
-  color: black;
-  background: #9baebe;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.cta:hover {
-  background: #c7d6e3;
-  transform: translateY(-2px);
-}
-
