@@ -1,6 +1,6 @@
 # Abiturnotenrechner – Devlog
 
-## Projekt
+# Projekt
 Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebener Noten.
 
 ---
@@ -33,7 +33,7 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 
 ---
 
-## Entwicklungsverlauf
+# Entwicklungsverlauf
 
 ### 07.01.
 - Erstellung der grundlegenden Website-Struktur
@@ -58,11 +58,13 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 
 ## Aktueller Entwicklungsstand
 - Website-Grundstruktur vorhanden
-- Notenrechner größtenteils funktionsfähig
+- Notenrechner ~~größtenteils~~ funktionsfähig
 - Notentabelle umgesetzt
-- Node.js läuft
-- MongoDB Compass eingerichtet
-- User-Datenbank noch nicht vollständig umgesetzt
+- ~~Node.js läuft~~
+- ~~MongoDB Compass eingerichtet~~
+- ~~User-Datenbank noch nicht vollständig umgesetzt~~
+- keine Daten werden gespeichert
+- läuft ausschließlich lokal im Browser
 
 ---
 
@@ -86,3 +88,17 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 - Firebase Datenbank gelöscht
 - kein speichern von Daten
 - "nur" home, Rechner und Über
+  
+## Stand 03.06.2026
+
+- index.html
+- style.css
+- script.js
+### Seiten:
+- Home
+- Rechner (mit "Startpage")
+- Über
+- Kontakt
+- Impressum
+- Datenschutz
+- 
