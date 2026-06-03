@@ -9,6 +9,16 @@ Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz 
 
 ## Projektstruktur
 
+├── Creator/
+│   ├── devlog.md
+│   └── README.md
+├── index.html
+├── README.md
+├── rechner-calc.html
+├── script.js
+└── style.css
+
+
 - [index.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/index.html) ist das HTML der Website.
 - Der Notenrechner ist als eigene Datei umgesetzt und direkt in die Webseite eingebettet.
   Dadurch können Änderungen an der Berechnungslogik einfach und ohne großen Aufwand vorgenommen werden.
