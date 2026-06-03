@@ -101,4 +101,3 @@ Webbasierter Abiturnotenrechner zur Berechnung der Abiturnote anhand eingegebene
 - Kontakt
 - Impressum
 - Datenschutz
-- 
