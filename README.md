@@ -9,6 +9,7 @@ Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz 
 
 ## Projektstruktur
 
+```bash
 ├── Creator/
 │   ├── devlog.md
 │   └── README.md
@@ -17,6 +18,7 @@ Das Projekt wurde von Schülern der Oberstufe (Q2 und Q4) am Gymnasium Steglitz 
 ├── rechner-calc.html
 ├── script.js
 └── style.css
+```
 
 
 - [index.html](https://github.com/SASSYwarner/Notenrechner-OPOR/blob/main/index.html) ist das HTML der Website.
